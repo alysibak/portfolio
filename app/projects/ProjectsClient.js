@@ -1,144 +1,191 @@
 "use client";
 
 import React from "react";
-import { useTheme } from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import GlassCard from "@/components/GlassCard";
 import { projects } from "@/lib/data";
-import { motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
-import Link from "next/link";
-
-const ProjectCard = ({ project, index, darkMode }) => (
-  <motion.div
-    className={`group relative rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 overflow-hidden ${
-      darkMode
-        ? 'bg-gray-800 bg-opacity-80 border-gray-600 hover:border-blue-500'
-        : 'bg-white bg-opacity-90 border-blue-200 hover:border-blue-400'
-    }`}
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: index * 0.2 }}
-    whileHover={{ scale: 1.02, y: -5 }}
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-    <div className="relative z-10">
-      <div className="flex justify-between items-start mb-6">
-        <div>
-          <span className={`text-xs font-semibold px-3 py-1 rounded-full mb-3 inline-block ${
-            darkMode ? 'bg-purple-900 text-purple-200' : 'bg-purple-100 text-purple-700'
-          }`}>
-            {project.category}
-          </span>
-          <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:from-cyan-600 group-hover:to-purple-600 transition-all duration-300">
-            {project.title}
-          </h3>
-        </div>
-        <span className={`px-4 py-2 rounded-full text-xs font-bold shadow-md ${
-          project.status === 'Completed'
-            ? (darkMode ? 'bg-green-900 text-green-200 border border-green-700' : 'bg-green-100 text-green-700 border border-green-300')
-            : (darkMode ? 'bg-yellow-900 text-yellow-200 border border-yellow-700' : 'bg-yellow-100 text-yellow-700 border border-yellow-300')
-        }`}>
-          {project.status}
-        </span>
-      </div>
-
-      <p className={`leading-relaxed mb-6 text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-        {project.description}
-      </p>
-
-      <div className="mb-8">
-        <p className={`text-sm font-semibold mb-3 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>
-          Technologies Used:
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {project.techStack.split(', ').map((tech, i) => (
-            <span
-              key={i}
-              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 ${
-                darkMode
-                  ? 'bg-blue-900 text-blue-200 hover:bg-blue-800'
-                  : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
-              }`}
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex justify-center">
-        <a
-          href={project.githubLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 px-6 py-3 rounded-lg text-white hover:scale-105 transition-all duration-300 shadow-lg font-semibold"
-        >
-          <FaGithub />
-          <span>View on GitHub</span>
-        </a>
-      </div>
-    </div>
-  </motion.div>
-);
+import { FaGithub, FaExternalLinkAlt, FaCode, FaRocket } from "react-icons/fa";
 
 export default function ProjectsClient() {
-  const { darkMode } = useTheme();
+  const glowColors = ["blue", "purple", "cyan", "green"];
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      darkMode
-        ? "bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800 text-white"
-        : "bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50 text-gray-900"
-    }`}>
+    <div className="min-h-screen">
       <Navigation />
 
-      <div className="container mx-auto px-6 py-16 pt-32 max-w-7xl">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 via-cyan-600 to-purple-600 bg-clip-text text-transparent mb-6">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-6xl sm:text-7xl font-black gradient-text mb-6">
             Featured Projects
           </h1>
-          <p className={`text-xl max-w-3xl mx-auto leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            A showcase of applications and software I&apos;ve built, demonstrating full-stack development skills and problem-solving abilities
+          <p className="text-2xl text-white/90 max-w-3xl mx-auto font-medium">
+            Real-world applications built with modern technologies
           </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} darkMode={darkMode} />
-          ))}
         </div>
+      </section>
 
-        <motion.div
-          className={`text-center rounded-xl p-10 shadow-xl border-2 ${
-            darkMode
-              ? 'bg-gray-800 bg-opacity-80 border-gray-600'
-              : 'bg-white bg-opacity-90 border-blue-200'
-          }`}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
-            Have a project in mind?
+      {/* Projects Grid */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
+            {projects.map((project, idx) => (
+              <GlassCard
+                key={idx}
+                hover3D
+                glowColor={glowColors[idx % glowColors.length]}
+                delay={idx * 0.1}
+                className="p-8 flex flex-col"
+              >
+                {/* Header */}
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <span className="px-4 py-1.5 bg-purple-500/20 text-purple-300 rounded-full text-xs font-bold border border-purple-400/30 inline-block mb-3">
+                      {project.category}
+                    </span>
+                    <h3 className="text-3xl font-black gradient-text mb-2">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <span className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap ${
+                    project.status === 'Completed'
+                      ? 'bg-green-500/20 text-green-300 border border-green-400/30'
+                      : 'bg-blue-500/20 text-blue-300 border border-blue-400/30'
+                  }`}>
+                    {project.status}
+                  </span>
+                </div>
+
+                {/* Description */}
+                <p className="text-white/90 text-lg leading-relaxed mb-6 font-medium flex-grow">
+                  {project.description}
+                </p>
+
+                {/* Tech Stack */}
+                <div className="mb-6">
+                  <p className="text-white/90 font-semibold mb-3 flex items-center gap-2">
+                    <FaCode className="text-blue-400" />
+                    Technologies
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.split(', ').map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1.5 bg-blue-500/20 text-blue-300 rounded-lg text-sm font-medium border border-blue-400/20 hover:scale-110 transition-transform"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* GitHub Link */}
+                <div className="flex gap-3">
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 px-6 py-3 rounded-lg text-white font-bold hover:scale-105 transition-all duration-300 shadow-lg"
+                  >
+                    <FaGithub className="text-lg" />
+                    <span>View Code</span>
+                  </a>
+                </div>
+              </GlassCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Project Stats */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-black gradient-text text-center mb-16">
+            Development Highlights
           </h2>
-          <p className={`text-lg mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            I&apos;m always interested in taking on new challenges and building innovative solutions
-          </p>
-          <Link
-            href="/contact"
-            className="bg-gradient-to-r from-blue-600 to-cyan-600 px-10 py-4 rounded-xl text-white hover:scale-105 transition-all duration-300 shadow-lg font-semibold inline-block"
-          >
-            Let&apos;s Collaborate
-          </Link>
-        </motion.div>
-      </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <GlassCard hover3D glowColor="blue" className="p-8 text-center space-y-4">
+              <div className="flex justify-center">
+                <div className="p-4 bg-blue-500/20 rounded-full">
+                  <FaRocket className="text-4xl text-blue-400" />
+                </div>
+              </div>
+              <div className="text-4xl font-black gradient-text">6+</div>
+              <div className="text-white/90 font-semibold">
+                Projects Completed
+              </div>
+              <p className="text-white/70 text-sm">
+                Full-stack applications and solutions
+              </p>
+            </GlassCard>
+
+            <GlassCard hover3D glowColor="cyan" className="p-8 text-center space-y-4">
+              <div className="flex justify-center">
+                <div className="p-4 bg-cyan-500/20 rounded-full">
+                  <FaCode className="text-4xl text-cyan-400" />
+                </div>
+              </div>
+              <div className="text-4xl font-black gradient-text">10+</div>
+              <div className="text-white/90 font-semibold">
+                Technologies Used
+              </div>
+              <p className="text-white/70 text-sm">
+                Modern frameworks and tools
+              </p>
+            </GlassCard>
+
+            <GlassCard hover3D glowColor="purple" className="p-8 text-center space-y-4">
+              <div className="flex justify-center">
+                <div className="p-4 bg-purple-500/20 rounded-full">
+                  <FaExternalLinkAlt className="text-4xl text-purple-400" />
+                </div>
+              </div>
+              <div className="text-4xl font-black gradient-text">100%</div>
+              <div className="text-white/90 font-semibold">
+                Open Source
+              </div>
+              <p className="text-white/70 text-sm">
+                All projects on GitHub
+              </p>
+            </GlassCard>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <GlassCard glowColor="blue" className="p-16 text-center space-y-8">
+            <h2 className="text-5xl font-black">
+              <span className="gradient-text">Let's Build</span>
+              <br />
+              <span className="text-white">Your Next Project</span>
+            </h2>
+            <p className="text-xl text-white/90 font-medium max-w-2xl mx-auto">
+              I'm always excited to work on new challenges and innovative solutions
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 pulse-glow"
+              >
+                Start a Conversation
+              </a>
+              <a
+                href="https://github.com/alysibak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-5 glass rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 glow-border flex items-center justify-center gap-2"
+              >
+                <FaGithub />
+                <span>View All Projects</span>
+              </a>
+            </div>
+          </GlassCard>
+        </div>
+      </section>
 
       <Footer />
     </div>

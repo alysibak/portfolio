@@ -1,260 +1,206 @@
 "use client";
 
 import React from "react";
-import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaCalendarCheck } from "react-icons/fa";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { useTheme } from "@/components/ThemeProvider";
+import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaCalendarCheck, FaDownload } from "react-icons/fa";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import GlassCard from "@/components/GlassCard";
 
 export default function ContactClient() {
-  const { darkMode } = useTheme();
-
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      darkMode
-        ? "bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800 text-white"
-        : "bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50 text-gray-900"
-    }`}>
+    <div className="min-h-screen">
       <Navigation />
 
-      <div className="container mx-auto px-6 py-16 pt-32 max-w-5xl">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-blue-600 via-cyan-600 to-purple-600 bg-clip-text text-transparent mb-6">
-            Let&apos;s Connect
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-6xl sm:text-7xl font-black gradient-text mb-6">
+            Let's Connect
           </h1>
-          <p className={`text-xl max-w-3xl mx-auto leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Ready to contribute to your next project! I&apos;m always open to discussing opportunities, collaborations, and new challenges.
+          <p className="text-2xl text-white/90 max-w-3xl mx-auto font-medium">
+            Ready to make an impact together? I'm available for Summer 2026 Co-op opportunities
           </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
-          {/* Contact Information */}
-          <motion.div
-            className={`rounded-xl p-8 shadow-lg border-2 ${
-              darkMode
-                ? 'bg-gray-800 bg-opacity-80 border-gray-600'
-                : 'bg-white bg-opacity-90 border-blue-200'
-            }`}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-8">
-              Get in Touch
-            </h2>
-
-            <div className="space-y-6">
-              <motion.div
-                className="flex items-center space-x-4 group cursor-pointer"
-                whileHover={{ x: 5 }}
-              >
-                <div className={`p-4 rounded-xl transition-colors duration-300 ${
-                  darkMode ? 'bg-blue-900 group-hover:bg-blue-800' : 'bg-blue-100 group-hover:bg-blue-200'
-                }`}>
-                  <FaEnvelope className="text-blue-600 text-xl" />
-                </div>
-                <div>
-                  <h3 className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>Email</h3>
-                  <a href="mailto:asibak@uoguelph.ca" className="text-blue-600 hover:text-blue-500 transition-colors duration-300 text-lg">
-                    asibak@uoguelph.ca
-                  </a>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="flex items-center space-x-4 group cursor-pointer"
-                whileHover={{ x: 5 }}
-              >
-                <div className={`p-4 rounded-xl transition-colors duration-300 ${
-                  darkMode ? 'bg-gray-700 group-hover:bg-gray-600' : 'bg-gray-100 group-hover:bg-gray-200'
-                }`}>
-                  <FaGithub className="text-gray-700 text-xl" />
-                </div>
-                <div>
-                  <h3 className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>GitHub</h3>
-                  <a href="https://github.com/alysibak" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500 transition-colors duration-300 text-lg">
-                    github.com/alysibak
-                  </a>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="flex items-center space-x-4 group cursor-pointer"
-                whileHover={{ x: 5 }}
-              >
-                <div className={`p-4 rounded-xl transition-colors duration-300 ${
-                  darkMode ? 'bg-blue-900 group-hover:bg-blue-800' : 'bg-blue-100 group-hover:bg-blue-200'
-                }`}>
-                  <FaLinkedin className="text-blue-600 text-xl" />
-                </div>
-                <div>
-                  <h3 className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>LinkedIn</h3>
-                  <a href="https://www.linkedin.com/in/aly-sibak-721b85252/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500 transition-colors duration-300 text-lg">
-                    Connect with me
-                  </a>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="flex items-center space-x-4 group"
-                whileHover={{ x: 5 }}
-              >
-                <div className={`p-4 rounded-xl ${
-                  darkMode ? 'bg-cyan-900' : 'bg-cyan-100'
-                }`}>
-                  <FaMapMarkerAlt className="text-cyan-600 text-xl" />
-                </div>
-                <div>
-                  <h3 className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>Location</h3>
-                  <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>Ontario, Canada</p>
-                </div>
-              </motion.div>
-            </div>
-
-            <div className={`mt-8 pt-8 ${darkMode ? 'border-t border-gray-600' : 'border-t border-blue-200'}`}>
-              <h3 className={`font-bold text-lg mb-6 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Quick Links</h3>
-              <div className="space-y-3">
-                <a href="/AlySibakResume.pdf" target="_blank" rel="noopener noreferrer" className="block text-blue-600 hover:text-blue-500 transition-colors duration-300 text-lg font-medium">
-                  View Resume
-                </a>
-                <Link href="/projects" className="block text-blue-600 hover:text-blue-500 transition-colors duration-300 text-lg font-medium">
-                  View My Projects
-                </Link>
-                <Link href="/experience" className="block text-blue-600 hover:text-blue-500 transition-colors duration-300 text-lg font-medium">
-                  Professional Experience
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* About Section */}
-          <motion.div
-            className={`rounded-xl p-8 shadow-lg border-2 ${
-              darkMode
-                ? 'bg-gray-800 bg-opacity-80 border-gray-600'
-                : 'bg-white bg-opacity-90 border-blue-200'
-            }`}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent mb-8">
-              What I&apos;m Looking For
-            </h2>
-
-            <div className="space-y-6">
-              <div className={`p-6 rounded-lg border-l-4 border-blue-500 ${
-                darkMode ? 'bg-gray-700 bg-opacity-50' : 'bg-blue-50'
-              }`}>
-                <h3 className={`font-bold text-lg mb-3 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Co-op Opportunities</h3>
-                <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Software development internships where I can apply my full-stack skills and learn from experienced teams
-                </p>
-              </div>
-
-              <div className={`p-6 rounded-lg border-l-4 border-cyan-500 ${
-                darkMode ? 'bg-gray-700 bg-opacity-50' : 'bg-cyan-50'
-              }`}>
-                <h3 className={`font-bold text-lg mb-3 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Project Collaborations</h3>
-                <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Open-source contributions and freelance projects involving modern web technologies
-                </p>
-              </div>
-
-              <div className={`p-6 rounded-lg border-l-4 border-purple-500 ${
-                darkMode ? 'bg-gray-700 bg-opacity-50' : 'bg-purple-50'
-              }`}>
-                <h3 className={`font-bold text-lg mb-3 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Learning Opportunities</h3>
-                <p className={`leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Hackathons, tech meetups, and development communities focused on innovation
-                </p>
-              </div>
-            </div>
-
-            <div className={`mt-8 pt-8 ${darkMode ? 'border-t border-gray-600' : 'border-t border-blue-200'}`}>
-              <div className="flex items-center gap-3 mb-4">
-                <FaCalendarCheck className="text-green-600 text-xl" />
-                <h3 className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>Current Status</h3>
-              </div>
-              <div className={`px-6 py-4 rounded-lg inline-flex items-center gap-3 shadow-md border-2 ${
-                darkMode
-                  ? 'bg-green-900 text-green-200 border-green-700'
-                  : 'bg-green-100 text-green-800 border-green-300'
-              }`}>
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="font-semibold">Available for Summer 2026 Co-op</span>
-              </div>
-            </div>
-          </motion.div>
         </div>
+      </section>
 
-        <motion.div
-          className={`text-center rounded-xl p-10 shadow-lg border-2 ${
-            darkMode
-              ? 'bg-gray-800 bg-opacity-80 border-gray-600'
-              : 'bg-white bg-opacity-90 border-blue-200'
-          }`}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-8">
-            Connect on Social Media
-          </h2>
-          <div className="flex justify-center space-x-8">
-            <motion.a
-              href="https://github.com/alysibak"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-gray-800 text-white p-6 rounded-xl hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-600 hover:border-gray-500"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-            >
-              <FaGithub className="text-3xl group-hover:animate-pulse" />
-            </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/in/aly-sibak-721b85252/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-blue-600 text-white p-6 rounded-xl hover:bg-blue-500 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-500 hover:border-blue-400"
-              whileHover={{ scale: 1.1, rotate: -5 }}
-            >
-              <FaLinkedin className="text-3xl group-hover:animate-pulse" />
-            </motion.a>
-            <motion.a
-              href="mailto:asibak@uoguelph.ca"
-              className="group bg-red-600 text-white p-6 rounded-xl hover:bg-red-500 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-red-500 hover:border-red-400"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-            >
-              <FaEnvelope className="text-3xl group-hover:animate-pulse" />
-            </motion.a>
+      {/* Contact Grid */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Contact Info Card */}
+            <GlassCard hover3D glowColor="blue" className="p-10 space-y-8">
+              <h2 className="text-3xl font-black gradient-text mb-8">
+                Get in Touch
+              </h2>
+
+              <div className="space-y-6">
+                {/* Email */}
+                <a
+                  href="mailto:asibak@uoguelph.ca"
+                  className="flex items-center gap-4 p-4 glass rounded-lg hover:scale-105 transition-all duration-300 group"
+                >
+                  <div className="p-3 bg-blue-500/20 rounded-lg group-hover:bg-blue-500/30 transition-colors">
+                    <FaEnvelope className="text-2xl text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white/90 font-semibold text-sm">Email</h3>
+                    <p className="text-white font-bold text-lg">asibak@uoguelph.ca</p>
+                  </div>
+                </a>
+
+                {/* GitHub */}
+                <a
+                  href="https://github.com/alysibak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 glass rounded-lg hover:scale-105 transition-all duration-300 group"
+                >
+                  <div className="p-3 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors">
+                    <FaGithub className="text-2xl text-purple-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white/90 font-semibold text-sm">GitHub</h3>
+                    <p className="text-white font-bold text-lg">github.com/alysibak</p>
+                  </div>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/in/alysibak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 glass rounded-lg hover:scale-105 transition-all duration-300 group"
+                >
+                  <div className="p-3 bg-cyan-500/20 rounded-lg group-hover:bg-cyan-500/30 transition-colors">
+                    <FaLinkedin className="text-2xl text-cyan-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white/90 font-semibold text-sm">LinkedIn</h3>
+                    <p className="text-white font-bold text-lg">Connect with me</p>
+                  </div>
+                </a>
+              </div>
+            </GlassCard>
+
+            {/* Availability Card */}
+            <GlassCard hover3D glowColor="green" className="p-10 space-y-8">
+              <h2 className="text-3xl font-black gradient-text mb-8">
+                Availability
+              </h2>
+
+              <div className="space-y-6">
+                {/* Status */}
+                <div className="flex items-center gap-4 p-4 bg-green-500/20 rounded-lg border border-green-400/30">
+                  <div className="p-3 bg-green-500/20 rounded-lg">
+                    <FaCalendarCheck className="text-2xl text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white/90 font-semibold text-sm">Status</h3>
+                    <p className="text-white font-bold text-lg">Open to Opportunities</p>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-center gap-4 p-4 glass rounded-lg">
+                  <div className="p-3 bg-blue-500/20 rounded-lg">
+                    <FaMapMarkerAlt className="text-2xl text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white/90 font-semibold text-sm">Location</h3>
+                    <p className="text-white font-bold text-lg">Guelph, ON, Canada</p>
+                  </div>
+                </div>
+
+                {/* Resume Download */}
+                <a
+                  href="/AlySibakResume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-3 p-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:scale-105 transition-all duration-300 shadow-lg group"
+                >
+                  <FaDownload className="text-xl text-white group-hover:animate-bounce" />
+                  <span className="text-white font-bold text-lg">Download Resume</span>
+                </a>
+              </div>
+
+              <div className="pt-6 border-t border-white/10">
+                <p className="text-white/80 text-sm leading-relaxed">
+                  <strong className="text-white/90">Seeking:</strong> Summer 2026 Co-op position in full-stack development, AI integration, or software engineering
+                </p>
+              </div>
+            </GlassCard>
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        <motion.div
-          className={`text-center mt-12 p-8 rounded-xl border-2 ${
-            darkMode
-              ? 'bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border-blue-700'
-              : 'bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-300'
-          }`}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
-            Quick Response Guaranteed
-          </h3>
-          <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            I typically respond to emails within 24 hours and am always excited to discuss new opportunities!
-          </p>
-        </motion.div>
-      </div>
+      {/* Why Contact Me */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-black gradient-text text-center mb-16">
+            What I Bring to Your Team
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <GlassCard hover3D glowColor="blue" className="p-8 space-y-4 text-center">
+              <div className="text-5xl font-black gradient-text">1</div>
+              <h3 className="text-2xl font-bold text-white">Real-World Experience</h3>
+              <p className="text-white/80 font-medium">
+                Proven track record building production software at P&P Optica with AI-powered solutions
+              </p>
+            </GlassCard>
+
+            <GlassCard hover3D glowColor="cyan" className="p-8 space-y-4 text-center">
+              <div className="text-5xl font-black gradient-text">2</div>
+              <h3 className="text-2xl font-bold text-white">Quick Learner</h3>
+              <p className="text-white/80 font-medium">
+                Mastered React, TypeScript, and AWS on the job - I adapt fast to new technologies
+              </p>
+            </GlassCard>
+
+            <GlassCard hover3D glowColor="purple" className="p-8 space-y-4 text-center">
+              <div className="text-5xl font-black gradient-text">3</div>
+              <h3 className="text-2xl font-bold text-white">Team Player</h3>
+              <p className="text-white/80 font-medium">
+                Teaching experience with 250+ students shows I communicate complex ideas clearly
+              </p>
+            </GlassCard>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <GlassCard glowColor="blue" className="p-16 text-center space-y-8">
+            <h2 className="text-5xl font-black">
+              <span className="gradient-text">Ready When</span>
+              <br />
+              <span className="text-white">You Are</span>
+            </h2>
+            <p className="text-xl text-white/90 font-medium max-w-2xl mx-auto">
+              Whether you have a specific opportunity in mind or just want to chat about tech,
+              I'm always happy to connect
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="mailto:asibak@uoguelph.ca"
+                className="px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 pulse-glow"
+              >
+                Send an Email
+              </a>
+              <a
+                href="https://www.linkedin.com/in/alysibak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-5 glass rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 glow-border flex items-center justify-center gap-2"
+              >
+                <FaLinkedin />
+                <span>Connect on LinkedIn</span>
+              </a>
+            </div>
+          </GlassCard>
+        </div>
+      </section>
 
       <Footer />
     </div>
