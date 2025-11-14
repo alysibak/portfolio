@@ -1,76 +1,77 @@
 "use client";
 
 import React from "react";
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaRocket, FaCode, FaBriefcase } from "react-icons/fa";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen animated-gradient-bg">
       <Navigation />
 
       {/* Hero */}
-      <section className="pt-40 pb-24 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-6">
-            <span className="inline-block px-3 py-1 bg-gray-900 text-gray-100 text-xs font-medium rounded-full">
-              Open for Summer 2026 Co-op
+      <section className="pt-40 pb-32 px-4 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-8 floating">
+            <span className="inline-block px-4 py-2 badge text-white text-sm font-semibold rounded-full">
+              🚀 Available for Summer 2026 Co-op
             </span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Hi, I'm Aly Sibak
+          <h1 className="text-6xl md:text-7xl font-black text-white mb-8 leading-tight text-shadow">
+            Hi, I'm <span className="gradient-text">Aly Sibak</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed max-w-2xl">
-            I'm a 3rd-year Computer Science student at University of Guelph building production systems that actually matter.
-            Currently shipping code at <span className="font-semibold text-gray-900">P&P Optica</span>.
+          <p className="text-2xl md:text-3xl text-white/90 mb-12 leading-relaxed max-w-3xl text-shadow">
+            I build production systems that process millions of pounds of food daily.
+            3rd-year CS student who ships real code at
+            <span className="font-bold text-white"> P&P Optica</span>.
           </p>
 
           {/* Social Links */}
-          <div className="flex gap-4 mb-16">
+          <div className="flex flex-wrap gap-4 mb-16">
             <a
               href="https://github.com/alysibak"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 glossy-button text-white font-semibold rounded-xl smooth-transition"
             >
               <FaGithub />
-              <span className="text-sm font-medium">GitHub</span>
+              <span>GitHub</span>
             </a>
             <a
               href="https://www.linkedin.com/in/alysibak"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:border-gray-400 hover:bg-white transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 glossy-button text-white font-semibold rounded-xl smooth-transition"
             >
               <FaLinkedin />
-              <span className="text-sm font-medium">LinkedIn</span>
+              <span>LinkedIn</span>
             </a>
             <a
               href="mailto:asibak@uoguelph.ca"
-              className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:border-gray-400 hover:bg-white transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 glossy-button text-white font-semibold rounded-xl smooth-transition"
             >
               <FaEnvelope />
-              <span className="text-sm font-medium">Email</span>
+              <span>Email</span>
             </a>
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-8 mb-16 pb-16 border-b border-gray-200">
-            <div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">250+</div>
-              <div className="text-sm text-gray-600">Students Taught</div>
+          <div className="grid grid-cols-3 gap-6 mb-20">
+            <div className="glass p-6 rounded-2xl smooth-transition">
+              <div className="text-4xl font-black text-white mb-2">250+</div>
+              <div className="text-sm text-white/80 font-medium">Students Mentored</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">6+</div>
-              <div className="text-sm text-gray-600">Projects Built</div>
+            <div className="glass p-6 rounded-2xl smooth-transition">
+              <div className="text-4xl font-black text-white mb-2">6+</div>
+              <div className="text-sm text-white/80 font-medium">Real Projects</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">83%</div>
-              <div className="text-sm text-gray-600">GPA • Dean's List</div>
+            <div className="glass p-6 rounded-2xl smooth-transition">
+              <div className="text-4xl font-black text-white mb-2">83%</div>
+              <div className="text-sm text-white/80 font-medium">GPA • Dean's List</div>
             </div>
           </div>
 
@@ -78,51 +79,69 @@ export default function HomePage() {
           <div className="space-y-6">
             <Link
               href="/projects"
-              className="group block p-8 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-lg transition-all"
+              className="group block glass p-8 rounded-3xl smooth-transition shimmer"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h2 className="text-2xl font-semibold text-gray-900">Featured Work</h2>
-                <FaArrowRight className="text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-white/20 rounded-xl">
+                    <FaRocket className="text-2xl text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold text-white">Featured Work</h2>
+                </div>
+                <FaArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-2 smooth-transition text-xl mt-2" />
               </div>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                Building PocketChange (fintech platform with Plaid API), 3D Fitness App, and more.
-                Real projects solving real problems.
+              <p className="text-white/90 leading-relaxed mb-6 text-lg">
+                Building PocketChange—a fintech platform with Plaid API integration.
+                Plus a 3D Fitness App mapping muscle groups, and production-ready portfolio managers.
+                Not school projects. Real solutions.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">React</span>
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">TypeScript</span>
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">Node.js</span>
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">PostgreSQL</span>
+                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">React</span>
+                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">TypeScript</span>
+                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">Node.js</span>
+                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">PostgreSQL</span>
+                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">AWS</span>
               </div>
             </Link>
 
             <Link
               href="/experience"
-              className="group block p-8 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-lg transition-all"
+              className="group block glass p-8 rounded-3xl smooth-transition"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h2 className="text-2xl font-semibold text-gray-900">Experience</h2>
-                <FaArrowRight className="text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-white/20 rounded-xl">
+                    <FaBriefcase className="text-2xl text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold text-white">Where I Work</h2>
+                </div>
+                <FaArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-2 smooth-transition text-xl mt-2" />
               </div>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                Software Developer at P&P Optica building hyperspectral imaging systems.
-                Teaching Assistant for 250+ students in discrete mathematics.
+              <p className="text-white/90 leading-relaxed mb-4 text-lg">
+                Shipping code at P&P Optica—building hyperspectral imaging systems that detect food contamination.
+                Taught 250+ students discrete mathematics. Cut deployment times by 75%.
               </p>
-              <div className="text-sm text-gray-500">
-                Currently working • Available Summer 2026
+              <div className="text-sm text-white/70 font-medium">
+                Currently working • Open to Summer 2026 opportunities
               </div>
             </Link>
 
             <Link
               href="/blog"
-              className="group block p-8 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-lg transition-all"
+              className="group block glass p-8 rounded-3xl smooth-transition"
             >
-              <div className="flex items-start justify-between mb-3">
-                <h2 className="text-2xl font-semibold text-gray-900">Writing</h2>
-                <FaArrowRight className="text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-white/20 rounded-xl">
+                    <FaCode className="text-2xl text-white" />
+                  </div>
+                  <h2 className="text-3xl font-bold text-white">Writing</h2>
+                </div>
+                <FaArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-2 smooth-transition text-xl mt-2" />
               </div>
-              <p className="text-gray-600 leading-relaxed">
-                Deep dives on development environments, Git workflows, and lessons learned building production software.
+              <p className="text-white/90 leading-relaxed text-lg">
+                Deep dives on dev environments that don't suck, Git workflows that actually work,
+                and hard-won lessons from shipping production software.
               </p>
             </Link>
           </div>
