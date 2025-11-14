@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useTheme } from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import GlassCard from "@/components/GlassCard";
 
 const TypewriterText = ({ texts, className }) => {
   const [currentText, setCurrentText] = useState('');
@@ -62,15 +63,13 @@ const ParallaxSection = ({ children, offset = 0.5 }) => {
   );
 };
 
-const MetricCard = ({ number, label, suffix = "", darkMode }) => (
-  <div className={`text-center p-3 sm:p-4 xl:p-6 rounded-xl transition-all duration-300 hover:scale-105 ${
-    darkMode ? 'bg-gray-800/50 border border-gray-700' : 'bg-white/50 border border-blue-200'
-  } backdrop-blur-sm`}>
-    <div className="text-2xl sm:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+const MetricCard = ({ number, label, suffix = "", delay = 0 }) => (
+  <GlassCard hover3D={true} glowColor="blue" delay={delay} className="text-center p-3 sm:p-4 xl:p-6">
+    <div className="text-2xl sm:text-3xl xl:text-4xl font-bold gradient-text">
       {number}{suffix}
     </div>
-    <div className={`text-xs sm:text-sm xl:text-base ${darkMode ? 'text-gray-400' : 'text-gray-600'} leading-tight mt-1`}>{label}</div>
-  </div>
+    <div className="text-xs sm:text-sm xl:text-base text-white/80 leading-tight mt-1">{label}</div>
+  </GlassCard>
 );
 
 export default function HomePage() {
@@ -84,11 +83,7 @@ export default function HomePage() {
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      darkMode
-        ? "bg-gradient-to-br from-gray-900 via-blue-900 to-gray-800 text-white"
-        : "bg-gradient-to-br from-blue-50 via-cyan-50 to-indigo-50 text-gray-900"
-    }`}>
+    <div className="min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
@@ -108,14 +103,14 @@ export default function HomePage() {
               </div>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-extrabold mb-4 md:mb-6 xl:mb-8 bg-gradient-to-r from-blue-600 via-cyan-600 to-purple-600 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-extrabold mb-4 md:mb-6 xl:mb-8 leading-tight gradient-text">
               Aly Sibak
             </h1>
 
             <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-6 md:mb-8 xl:mb-10 h-12 sm:h-14 md:h-16 xl:h-20 2xl:h-24">
               <TypewriterText
                 texts={heroTexts}
-                className={darkMode ? 'text-gray-200' : 'text-gray-700'}
+                className={`neon-text ${darkMode ? 'text-white' : 'text-gray-900'}`}
               />
             </div>
 
@@ -134,18 +129,14 @@ export default function HomePage() {
               href="/AlySibakResume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gradient-to-r from-blue-600 to-cyan-600 px-6 sm:px-8 xl:px-10 py-3 sm:py-4 xl:py-5 rounded-xl text-white hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2 sm:space-x-3 text-sm sm:text-base xl:text-lg font-semibold min-w-max"
+              className="group bg-gradient-to-r from-blue-600 to-cyan-600 px-6 sm:px-8 xl:px-10 py-3 sm:py-4 xl:py-5 rounded-xl text-white hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2 sm:space-x-3 text-sm sm:text-base xl:text-lg font-semibold min-w-max pulse-glow magnetic"
             >
               <FaDownload className="group-hover:animate-bounce text-sm sm:text-base xl:text-lg" />
               <span>Download Resume</span>
             </a>
             <a
               href="/projects"
-              className={`group border-2 px-6 sm:px-8 xl:px-10 py-3 sm:py-4 xl:py-5 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2 sm:space-x-3 text-sm sm:text-base xl:text-lg min-w-max ${
-                darkMode
-                  ? 'border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white'
-                  : 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
-              }`}
+              className="group glass dark:glass-dark px-6 sm:px-8 xl:px-10 py-3 sm:py-4 xl:py-5 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2 sm:space-x-3 text-sm sm:text-base xl:text-lg min-w-max text-white magnetic glow-border"
             >
               <FaPlay className="group-hover:translate-x-1 transition-transform text-sm sm:text-base xl:text-lg" />
               <span>View My Work</span>
@@ -154,10 +145,10 @@ export default function HomePage() {
 
           {/* Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 xl:gap-6 mb-8 md:mb-10 xl:mb-12 px-4 max-w-4xl xl:max-w-5xl mx-auto">
-            <MetricCard number="6" suffix="+" label="Projects Completed" darkMode={darkMode} />
-            <MetricCard number="250" suffix="+" label="Students Helped" darkMode={darkMode} />
-            <MetricCard number="83" suffix="%" label="Current GPA" darkMode={darkMode} />
-            <MetricCard number="1" label="Co-op Completed" darkMode={darkMode} />
+            <MetricCard number="6" suffix="+" label="Projects Completed" delay={0.1} />
+            <MetricCard number="250" suffix="+" label="Students Helped" delay={0.2} />
+            <MetricCard number="83" suffix="%" label="Current GPA" delay={0.3} />
+            <MetricCard number="1" label="Co-op Completed" delay={0.4} />
           </div>
 
           {/* Scroll indicator */}
@@ -172,98 +163,90 @@ export default function HomePage() {
       {/* Experience Highlights */}
       <section id="highlights" className="py-12 md:py-16 xl:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl xl:max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-center mb-6 md:mb-8 xl:mb-12 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-center mb-6 md:mb-8 xl:mb-12 gradient-text">
             Experience Highlights
           </h2>
-          <p className={`text-lg sm:text-xl xl:text-2xl text-center mb-12 md:mb-16 xl:mb-20 px-4 max-w-4xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+          <p className="text-lg sm:text-xl xl:text-2xl text-center mb-12 md:mb-16 xl:mb-20 px-4 max-w-4xl mx-auto text-white/80">
             Real impact from professional software development and academic excellence
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 xl:gap-16">
             {/* P&P Optica Highlight */}
-            <div className={`p-6 md:p-8 xl:p-10 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
-              darkMode
-                ? 'bg-gray-800/80 border-gray-700 hover:border-blue-500'
-                : 'bg-white/80 border-blue-200 hover:border-blue-400'
-            } backdrop-blur-sm shadow-xl hover:shadow-2xl`}>
+            <GlassCard hover3D={true} glowColor="blue" delay={0.2} className="p-6 md:p-8 xl:p-10">
               <div className="flex items-center gap-4 xl:gap-6 mb-6 xl:mb-8">
-                <div className="p-3 md:p-4 xl:p-5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white flex-shrink-0">
+                <div className="p-3 md:p-4 xl:p-5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white flex-shrink-0 shimmer">
                   <FaBriefcase className="text-xl md:text-2xl xl:text-3xl" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-xl md:text-2xl xl:text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  <h3 className="text-xl md:text-2xl xl:text-3xl font-bold gradient-text">
                     P&P Optica
                   </h3>
-                  <p className={`text-sm md:text-base xl:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Software Developer Co-op</p>
+                  <p className="text-sm md:text-base xl:text-lg text-white/70">Software Developer Co-op</p>
                 </div>
               </div>
               <div className="space-y-3 md:space-y-4 xl:space-y-5">
                 <div className="flex items-start gap-3 xl:gap-4">
-                  <span className="text-green-500 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
-                  <p className={`text-sm md:text-base xl:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                  <span className="text-green-400 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
+                  <p className="text-sm md:text-base xl:text-lg text-white/90 leading-relaxed">
                     Built AI-powered food safety systems using React, TypeScript, and AWS
                   </p>
                 </div>
                 <div className="flex items-start gap-3 xl:gap-4">
-                  <span className="text-green-500 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
-                  <p className={`text-sm md:text-base xl:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                  <span className="text-green-400 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
+                  <p className="text-sm md:text-base xl:text-lg text-white/90 leading-relaxed">
                     Improved deployment speed and system reliability through automation
                   </p>
                 </div>
                 <div className="flex items-start gap-3 xl:gap-4">
-                  <span className="text-green-500 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
-                  <p className={`text-sm md:text-base xl:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                  <span className="text-green-400 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
+                  <p className="text-sm md:text-base xl:text-lg text-white/90 leading-relaxed">
                     Reduced new team member onboarding time with better documentation
                   </p>
                 </div>
               </div>
-            </div>
+            </GlassCard>
 
             {/* Academic Excellence */}
-            <div className={`p-6 md:p-8 xl:p-10 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
-              darkMode
-                ? 'bg-gray-800/80 border-gray-700 hover:border-cyan-500'
-                : 'bg-white/80 border-blue-200 hover:border-cyan-400'
-            } backdrop-blur-sm shadow-xl hover:shadow-2xl`}>
+            <GlassCard hover3D={true} glowColor="purple" delay={0.3} className="p-6 md:p-8 xl:p-10">
               <div className="flex items-center gap-4 xl:gap-6 mb-6 xl:mb-8">
-                <div className="p-3 md:p-4 xl:p-5 rounded-full bg-gradient-to-r from-cyan-600 to-purple-600 text-white flex-shrink-0">
+                <div className="p-3 md:p-4 xl:p-5 rounded-full bg-gradient-to-r from-cyan-600 to-purple-600 text-white flex-shrink-0 shimmer">
                   <FaCode className="text-xl md:text-2xl xl:text-3xl" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-xl md:text-2xl xl:text-3xl font-bold bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent">
+                  <h3 className="text-xl md:text-2xl xl:text-3xl font-bold gradient-text">
                     Academic Excellence
                   </h3>
-                  <p className={`text-sm md:text-base xl:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>University of Guelph</p>
+                  <p className="text-sm md:text-base xl:text-lg text-white/70">University of Guelph</p>
                 </div>
               </div>
               <div className="space-y-3 md:space-y-4 xl:space-y-5">
                 <div className="flex items-start gap-3 xl:gap-4">
-                  <span className="text-green-500 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
-                  <p className={`text-sm md:text-base xl:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                  <span className="text-green-400 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
+                  <p className="text-sm md:text-base xl:text-lg text-white/90 leading-relaxed">
                     Maintaining 83% GPA while taking advanced CS courses
                   </p>
                 </div>
                 <div className="flex items-start gap-3 xl:gap-4">
-                  <span className="text-green-500 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
-                  <p className={`text-sm md:text-base xl:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                  <span className="text-green-400 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
+                  <p className="text-sm md:text-base xl:text-lg text-white/90 leading-relaxed">
                     Teaching Assistant helping 250+ students in discrete mathematics
                   </p>
                 </div>
                 <div className="flex items-start gap-3 xl:gap-4">
-                  <span className="text-green-500 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
-                  <p className={`text-sm md:text-base xl:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
+                  <span className="text-green-400 text-lg md:text-xl xl:text-2xl flex-shrink-0">✓</span>
+                  <p className="text-sm md:text-base xl:text-lg text-white/90 leading-relaxed">
                     Built multiple full-stack applications and enterprise-level projects
                   </p>
                 </div>
               </div>
-            </div>
+            </GlassCard>
           </div>
 
           {/* Call to Action */}
           <div className="text-center mt-12 md:mt-16 xl:mt-20">
             <a
               href="/experience"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 px-8 md:px-10 xl:px-12 py-3 md:py-4 xl:py-5 rounded-xl text-white hover:scale-105 transition-all duration-300 shadow-lg font-semibold inline-block text-sm md:text-base xl:text-lg"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 px-8 md:px-10 xl:px-12 py-3 md:py-4 xl:py-5 rounded-xl text-white hover:scale-105 transition-all duration-300 shadow-lg font-semibold inline-block text-sm md:text-base xl:text-lg pulse-glow magnetic"
             >
               View Full Experience
             </a>
@@ -274,116 +257,92 @@ export default function HomePage() {
       {/* Quick Access Cards */}
       <section className="py-16 md:py-20 xl:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl xl:max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl xl:text-4xl font-bold text-center mb-8 md:mb-12 xl:mb-16 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-3xl xl:text-4xl font-bold text-center mb-8 md:mb-12 xl:mb-16 gradient-text">
             Explore My Work
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 xl:gap-10 max-w-5xl xl:max-w-6xl mx-auto">
             {/* Technical Skills Card */}
-            <a
-              href="/skills"
-              className={`group relative p-6 md:p-8 xl:p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 hover:scale-110 overflow-hidden cursor-pointer transform-gpu ${
-                darkMode
-                  ? 'bg-gray-800/90 border-gray-600 hover:border-blue-400 hover:bg-gray-700'
-                  : 'bg-white/90 border-blue-300 hover:border-blue-500 hover:bg-blue-50'
-              } backdrop-blur-sm ring-2 ring-transparent hover:ring-blue-500/30`}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10 text-center">
-                <div className="mb-4 xl:mb-6 flex justify-center">
-                  <div className="p-3 xl:p-4 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white group-hover:scale-110 transition-transform duration-300">
-                    <FaCode className="text-2xl md:text-3xl xl:text-4xl" />
+            <a href="/skills">
+              <GlassCard hover3D={true} glowColor="blue" delay={0.1} className="p-6 md:p-8 xl:p-10 cursor-pointer group">
+                <div className="text-center">
+                  <div className="mb-4 xl:mb-6 flex justify-center">
+                    <div className="p-3 xl:p-4 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white group-hover:scale-110 transition-transform duration-300 shimmer">
+                      <FaCode className="text-2xl md:text-3xl xl:text-4xl" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 xl:mb-3 gradient-text">Technical Skills</h3>
+                  <p className="mb-4 xl:mb-6 text-sm md:text-base xl:text-lg leading-relaxed text-white/80">
+                    React, TypeScript, Java, and more
+                  </p>
+                  <div className="flex items-center justify-center text-blue-400 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="mr-2 text-sm xl:text-base font-medium">Click to explore</span>
+                    <FaExternalLinkAlt className="text-xs xl:text-sm" />
                   </div>
                 </div>
-                <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 xl:mb-3 text-blue-600 group-hover:text-blue-500">Technical Skills</h3>
-                <p className={`mb-4 xl:mb-6 text-sm md:text-base xl:text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'} group-hover:text-current`}>
-                  React, TypeScript, Java, and more
-                </p>
-                <div className="flex items-center justify-center text-blue-600 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="mr-2 text-sm xl:text-base font-medium">Click to explore</span>
-                  <FaExternalLinkAlt className="text-xs xl:text-sm" />
-                </div>
-              </div>
+              </GlassCard>
             </a>
 
             {/* Experience Card */}
-            <a
-              href="/experience"
-              className={`group relative p-6 md:p-8 xl:p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 hover:scale-110 overflow-hidden cursor-pointer transform-gpu ${
-                darkMode
-                  ? 'bg-gray-800/90 border-gray-600 hover:border-cyan-400 hover:bg-gray-700'
-                  : 'bg-white/90 border-cyan-300 hover:border-cyan-500 hover:bg-cyan-50'
-              } backdrop-blur-sm ring-2 ring-transparent hover:ring-cyan-500/30`}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10 text-center">
-                <div className="mb-4 xl:mb-6 flex justify-center">
-                  <div className="p-3 xl:p-4 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-600 text-white group-hover:scale-110 transition-transform duration-300">
-                    <FaBriefcase className="text-2xl md:text-3xl xl:text-4xl" />
+            <a href="/experience">
+              <GlassCard hover3D={true} glowColor="cyan" delay={0.2} className="p-6 md:p-8 xl:p-10 cursor-pointer group">
+                <div className="text-center">
+                  <div className="mb-4 xl:mb-6 flex justify-center">
+                    <div className="p-3 xl:p-4 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-600 text-white group-hover:scale-110 transition-transform duration-300 shimmer">
+                      <FaBriefcase className="text-2xl md:text-3xl xl:text-4xl" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 xl:mb-3 gradient-text">Experience</h3>
+                  <p className="mb-4 xl:mb-6 text-sm md:text-base xl:text-lg leading-relaxed text-white/80">
+                    Software development at P&P Optica
+                  </p>
+                  <div className="flex items-center justify-center text-cyan-400 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="mr-2 text-sm xl:text-base font-medium">Click to explore</span>
+                    <FaExternalLinkAlt className="text-xs xl:text-sm" />
                   </div>
                 </div>
-                <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 xl:mb-3 text-cyan-600 group-hover:text-cyan-500">Experience</h3>
-                <p className={`mb-4 xl:mb-6 text-sm md:text-base xl:text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'} group-hover:text-current`}>
-                  Software development at P&P Optica
-                </p>
-                <div className="flex items-center justify-center text-cyan-600 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="mr-2 text-sm xl:text-base font-medium">Click to explore</span>
-                  <FaExternalLinkAlt className="text-xs xl:text-sm" />
-                </div>
-              </div>
+              </GlassCard>
             </a>
 
             {/* Projects Card */}
-            <a
-              href="/projects"
-              className={`group relative p-6 md:p-8 xl:p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 hover:scale-110 overflow-hidden cursor-pointer transform-gpu ${
-                darkMode
-                  ? 'bg-gray-800/90 border-gray-600 hover:border-purple-400 hover:bg-gray-700'
-                  : 'bg-white/90 border-purple-300 hover:border-purple-500 hover:bg-purple-50'
-              } backdrop-blur-sm ring-2 ring-transparent hover:ring-purple-500/30`}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10 text-center">
-                <div className="mb-4 xl:mb-6 flex justify-center">
-                  <div className="p-3 xl:p-4 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white group-hover:scale-110 transition-transform duration-300">
-                    <FaRocket className="text-2xl md:text-3xl xl:text-4xl" />
+            <a href="/projects">
+              <GlassCard hover3D={true} glowColor="purple" delay={0.3} className="p-6 md:p-8 xl:p-10 cursor-pointer group">
+                <div className="text-center">
+                  <div className="mb-4 xl:mb-6 flex justify-center">
+                    <div className="p-3 xl:p-4 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white group-hover:scale-110 transition-transform duration-300 shimmer">
+                      <FaRocket className="text-2xl md:text-3xl xl:text-4xl" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 xl:mb-3 gradient-text">Projects</h3>
+                  <p className="mb-4 xl:mb-6 text-sm md:text-base xl:text-lg leading-relaxed text-white/80">
+                    Full-stack applications and solutions
+                  </p>
+                  <div className="flex items-center justify-center text-purple-400 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="mr-2 text-sm xl:text-base font-medium">Click to explore</span>
+                    <FaExternalLinkAlt className="text-xs xl:text-sm" />
                   </div>
                 </div>
-                <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 xl:mb-3 text-purple-600 group-hover:text-purple-500">Projects</h3>
-                <p className={`mb-4 xl:mb-6 text-sm md:text-base xl:text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'} group-hover:text-current`}>
-                  Full-stack applications and solutions
-                </p>
-                <div className="flex items-center justify-center text-purple-600 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="mr-2 text-sm xl:text-base font-medium">Click to explore</span>
-                  <FaExternalLinkAlt className="text-xs xl:text-sm" />
-                </div>
-              </div>
+              </GlassCard>
             </a>
 
             {/* Contact Card */}
-            <a
-              href="/contact"
-              className={`group relative p-6 md:p-8 xl:p-10 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-2 hover:scale-110 overflow-hidden cursor-pointer transform-gpu ${
-                darkMode
-                  ? 'bg-gray-800/90 border-gray-600 hover:border-pink-400 hover:bg-gray-700'
-                  : 'bg-white/90 border-pink-300 hover:border-pink-500 hover:bg-pink-50'
-              } backdrop-blur-sm ring-2 ring-transparent hover:ring-pink-500/30`}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10 text-center">
-                <div className="mb-4 xl:mb-6 flex justify-center">
-                  <div className="p-3 xl:p-4 rounded-full bg-gradient-to-r from-pink-500 to-pink-600 text-white group-hover:scale-110 transition-transform duration-300">
-                    <FaComments className="text-2xl md:text-3xl xl:text-4xl" />
+            <a href="/contact">
+              <GlassCard hover3D={true} glowColor="pink" delay={0.4} className="p-6 md:p-8 xl:p-10 cursor-pointer group">
+                <div className="text-center">
+                  <div className="mb-4 xl:mb-6 flex justify-center">
+                    <div className="p-3 xl:p-4 rounded-full bg-gradient-to-r from-pink-500 to-pink-600 text-white group-hover:scale-110 transition-transform duration-300 shimmer">
+                      <FaComments className="text-2xl md:text-3xl xl:text-4xl" />
+                    </div>
+                  </div>
+                  <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 xl:mb-3 gradient-text">Contact</h3>
+                  <p className="mb-4 xl:mb-6 text-sm md:text-base xl:text-lg leading-relaxed text-white/80">
+                    Available for Summer 2026 Co-op
+                  </p>
+                  <div className="flex items-center justify-center text-pink-400 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="mr-2 text-sm xl:text-base font-medium">Click to explore</span>
+                    <FaExternalLinkAlt className="text-xs xl:text-sm" />
                   </div>
                 </div>
-                <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 xl:mb-3 text-pink-600 group-hover:text-pink-500">Contact</h3>
-                <p className={`mb-4 xl:mb-6 text-sm md:text-base xl:text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'} group-hover:text-current`}>
-                  Available for Summer 2026 Co-op
-                </p>
-                <div className="flex items-center justify-center text-pink-600 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="mr-2 text-sm xl:text-base font-medium">Click to explore</span>
-                  <FaExternalLinkAlt className="text-xs xl:text-sm" />
-                </div>
-              </div>
+              </GlassCard>
             </a>
           </div>
         </div>
