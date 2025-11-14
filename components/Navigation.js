@@ -23,6 +23,7 @@ export default function Navigation() {
 
   const navLinks = [
     { href: "/", label: "Home", icon: FaHome },
+    { href: "/blog", label: "Blog", icon: FaRocket },
     { href: "/skills", label: "Skills", icon: FaCode },
     { href: "/experience", label: "Experience", icon: FaBriefcase },
     { href: "/projects", label: "Projects", icon: FaRocket },

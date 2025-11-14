@@ -16,10 +16,10 @@ export default function ExperienceClient() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-6xl sm:text-7xl font-black gradient-text mb-6">
-            Professional Journey
+            Where I've Worked
           </h1>
           <p className="text-2xl text-white/90 max-w-3xl mx-auto font-medium">
-            Building real solutions and mentoring future developers
+            From classrooms to codebases - here's where I've learned what it really takes to ship software
           </p>
         </div>
       </section>
@@ -71,7 +71,7 @@ export default function ExperienceClient() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-5xl font-black gradient-text text-center mb-16">
-            Impact & Achievements
+            The Numbers
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -81,12 +81,12 @@ export default function ExperienceClient() {
                   <FaRocket className="text-4xl text-blue-400" />
                 </div>
               </div>
-              <div className="text-4xl font-black gradient-text">40%</div>
+              <div className="text-4xl font-black gradient-text">75%</div>
               <div className="text-white/90 font-semibold">
                 Faster Deployments
               </div>
               <p className="text-white/70 text-sm">
-                Optimized CI/CD pipelines for rapid delivery
+                Cut release time from 2 hours to 30 minutes for 20+ facilities
               </p>
             </GlassCard>
 
@@ -96,12 +96,12 @@ export default function ExperienceClient() {
                   <FaChartLine className="text-4xl text-cyan-400" />
                 </div>
               </div>
-              <div className="text-4xl font-black gradient-text">60%</div>
+              <div className="text-4xl font-black gradient-text">30%</div>
               <div className="text-white/90 font-semibold">
-                Reduced Onboarding Time
+                Workflow Efficiency
               </div>
               <p className="text-white/70 text-sm">
-                Comprehensive documentation and training materials
+                Dynamic material management without deployments
               </p>
             </GlassCard>
 
@@ -113,10 +113,10 @@ export default function ExperienceClient() {
               </div>
               <div className="text-4xl font-black gradient-text">250+</div>
               <div className="text-white/90 font-semibold">
-                Students Mentored
+                Students Taught
               </div>
               <p className="text-white/70 text-sm">
-                Teaching Assistant for Discrete Mathematics
+                TA for Discrete Math with 80%+ office hours attendance
               </p>
             </GlassCard>
           </div>
@@ -173,25 +173,25 @@ export default function ExperienceClient() {
         <div className="max-w-4xl mx-auto">
           <GlassCard glowColor="blue" className="p-16 text-center space-y-8">
             <h2 className="text-5xl font-black">
-              <span className="gradient-text">Ready to Make</span>
+              <span className="gradient-text">Want to Work</span>
               <br />
-              <span className="text-white">An Impact Together?</span>
+              <span className="text-white">Together?</span>
             </h2>
             <p className="text-xl text-white/90 font-medium max-w-2xl mx-auto">
-              Looking for Summer 2026 Co-op opportunities where I can contribute to meaningful projects
+              Looking for Summer 2026 Co-op. I ship fast, learn faster, and actually enjoy debugging.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
                 className="px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 pulse-glow"
               >
-                Get In Touch
+                Let's Talk
               </a>
               <a
                 href="/projects"
                 className="px-10 py-5 glass rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 glow-border"
               >
-                View My Projects
+                See What I've Built
               </a>
             </div>
           </GlassCard>

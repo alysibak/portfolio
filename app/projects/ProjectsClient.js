@@ -18,10 +18,11 @@ export default function ProjectsClient() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-6xl sm:text-7xl font-black gradient-text mb-6">
-            Featured Projects
+            What I've Actually Built
           </h1>
           <p className="text-2xl text-white/90 max-w-3xl mx-auto font-medium">
-            Real-world applications built with modern technologies
+            These aren't class assignments. These are real projects I built to solve real problems.
+            Some are live, some are still cooking.
           </p>
         </div>
       </section>
@@ -80,13 +81,28 @@ export default function ProjectsClient() {
                   </div>
                 </div>
 
-                {/* GitHub Link */}
+                {/* Links */}
                 <div className="flex gap-3">
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 px-6 py-3 rounded-lg text-white font-bold hover:scale-105 transition-all duration-300 shadow-lg"
+                    >
+                      <FaExternalLinkAlt className="text-lg" />
+                      <span>Live Site</span>
+                    </a>
+                  )}
                   <a
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 px-6 py-3 rounded-lg text-white font-bold hover:scale-105 transition-all duration-300 shadow-lg"
+                    className={`${project.liveLink ? 'flex-1' : 'flex-1'} flex items-center justify-center gap-2 ${
+                      project.liveLink
+                        ? 'glass border border-blue-400/30'
+                        : 'bg-gradient-to-r from-blue-600 to-cyan-600'
+                    } px-6 py-3 rounded-lg text-white font-bold hover:scale-105 transition-all duration-300 shadow-lg`}
                   >
                     <FaGithub className="text-lg" />
                     <span>View Code</span>
@@ -159,19 +175,19 @@ export default function ProjectsClient() {
         <div className="max-w-4xl mx-auto">
           <GlassCard glowColor="blue" className="p-16 text-center space-y-8">
             <h2 className="text-5xl font-black">
-              <span className="gradient-text">Let's Build</span>
+              <span className="gradient-text">Got an Idea?</span>
               <br />
-              <span className="text-white">Your Next Project</span>
+              <span className="text-white">Let's Talk</span>
             </h2>
             <p className="text-xl text-white/90 font-medium max-w-2xl mx-auto">
-              I'm always excited to work on new challenges and innovative solutions
+              I'm always down to collaborate on cool projects. Hit me up if you're building something interesting.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
                 className="px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 pulse-glow"
               >
-                Start a Conversation
+                Get in Touch
               </a>
               <a
                 href="https://github.com/alysibak"
@@ -180,7 +196,7 @@ export default function ProjectsClient() {
                 className="px-10 py-5 glass rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 glow-border flex items-center justify-center gap-2"
               >
                 <FaGithub />
-                <span>View All Projects</span>
+                <span>More on GitHub</span>
               </a>
             </div>
           </GlassCard>

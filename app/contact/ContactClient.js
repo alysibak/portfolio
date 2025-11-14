@@ -15,10 +15,10 @@ export default function ContactClient() {
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-6xl sm:text-7xl font-black gradient-text mb-6">
-            Let's Connect
+            Let's Talk
           </h1>
           <p className="text-2xl text-white/90 max-w-3xl mx-auto font-medium">
-            Ready to make an impact together? I'm available for Summer 2026 Co-op opportunities
+            Shoot me an email, connect on LinkedIn, or check out my code. I'm looking for Summer 2026 Co-op.
           </p>
         </div>
       </section>
@@ -137,31 +137,31 @@ export default function ContactClient() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-5xl font-black gradient-text text-center mb-16">
-            What I Bring to Your Team
+            What You Get
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             <GlassCard hover3D glowColor="blue" className="p-8 space-y-4 text-center">
               <div className="text-5xl font-black gradient-text">1</div>
-              <h3 className="text-2xl font-bold text-white">Real-World Experience</h3>
+              <h3 className="text-2xl font-bold text-white">Production Experience</h3>
               <p className="text-white/80 font-medium">
-                Proven track record building production software at P&P Optica with AI-powered solutions
+                Built real systems at P&P Optica processing millions of pounds of food daily. Not just toy projects.
               </p>
             </GlassCard>
 
             <GlassCard hover3D glowColor="cyan" className="p-8 space-y-4 text-center">
               <div className="text-5xl font-black gradient-text">2</div>
-              <h3 className="text-2xl font-bold text-white">Quick Learner</h3>
+              <h3 className="text-2xl font-bold text-white">Fast Learner</h3>
               <p className="text-white/80 font-medium">
-                Mastered React, TypeScript, and AWS on the job - I adapt fast to new technologies
+                Learned React, TypeScript, AWS, and PostgreSQL on the job. Give me a tech stack, I'll figure it out.
               </p>
             </GlassCard>
 
             <GlassCard hover3D glowColor="purple" className="p-8 space-y-4 text-center">
               <div className="text-5xl font-black gradient-text">3</div>
-              <h3 className="text-2xl font-bold text-white">Team Player</h3>
+              <h3 className="text-2xl font-bold text-white">Clear Communicator</h3>
               <p className="text-white/80 font-medium">
-                Teaching experience with 250+ students shows I communicate complex ideas clearly
+                Taught 250+ students discrete math. If I can explain proofs, I can explain code.
               </p>
             </GlassCard>
           </div>
@@ -173,20 +173,20 @@ export default function ContactClient() {
         <div className="max-w-4xl mx-auto">
           <GlassCard glowColor="blue" className="p-16 text-center space-y-8">
             <h2 className="text-5xl font-black">
-              <span className="gradient-text">Ready When</span>
+              <span className="gradient-text">I'm Just</span>
               <br />
-              <span className="text-white">You Are</span>
+              <span className="text-white">An Email Away</span>
             </h2>
             <p className="text-xl text-white/90 font-medium max-w-2xl mx-auto">
-              Whether you have a specific opportunity in mind or just want to chat about tech,
-              I'm always happy to connect
+              Got a co-op position? Want to chat about tech? Need help with a project?
+              Just want to talk about soccer? Hit me up.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="mailto:asibak@uoguelph.ca"
                 className="px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 pulse-glow"
               >
-                Send an Email
+                Email Me
               </a>
               <a
                 href="https://www.linkedin.com/in/alysibak"
@@ -195,7 +195,7 @@ export default function ContactClient() {
                 className="px-10 py-5 glass rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 glow-border flex items-center justify-center gap-2"
               >
                 <FaLinkedin />
-                <span>Connect on LinkedIn</span>
+                <span>LinkedIn</span>
               </a>
             </div>
           </GlassCard>

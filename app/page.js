@@ -312,66 +312,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TECH STACK - Horizontal Scroll Section */}
+      {/* BEYOND CODE - Personal Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-black gradient-text mb-4">Tech Arsenal</h2>
-            <p className="text-xl text-white/90 font-medium">Tools I use to build exceptional software</p>
+            <h2 className="text-5xl font-black gradient-text mb-4">Beyond Code</h2>
+            <p className="text-xl text-white/90 font-medium">Because developers are humans too</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <GlassCard hover3D glowColor="blue" className="p-8 space-y-6">
-              <h3 className="text-2xl font-bold gradient-text flex items-center gap-2">
-                <FaLaptopCode className="text-blue-400" />
-                Frontend & UI
-              </h3>
-              <div className="space-y-4">
-                <SkillBar name="React & Next.js" level={95} delay={0} />
-                <SkillBar name="TypeScript" level={90} delay={100} />
-                <SkillBar name="Tailwind CSS" level={92} delay={200} />
-                <SkillBar name="JavaScript ES6+" level={93} delay={300} />
-              </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <GlassCard hover3D glowColor="blue" className="p-8 text-center space-y-4">
+              <div className="text-6xl mb-4">⚽</div>
+              <h3 className="text-2xl font-bold gradient-text">Soccer</h3>
+              <p className="text-white/90 font-medium">
+                My moving meditation. Best debugging happens on the field, not at the desk.
+              </p>
             </GlassCard>
 
-            <GlassCard hover3D glowColor="purple" className="p-8 space-y-6">
-              <h3 className="text-2xl font-bold gradient-text flex items-center gap-2">
-                <FaDatabase className="text-purple-400" />
-                Backend & Data
-              </h3>
-              <div className="space-y-4">
-                <SkillBar name="Java & Spring" level={88} delay={0} />
-                <SkillBar name="Python" level={85} delay={100} />
-                <SkillBar name="SQL & PostgreSQL" level={87} delay={200} />
-                <SkillBar name="RESTful APIs" level={90} delay={300} />
-              </div>
+            <GlassCard hover3D glowColor="cyan" className="p-8 text-center space-y-4">
+              <div className="text-6xl mb-4">🏊</div>
+              <h3 className="text-2xl font-bold gradient-text">Swimming</h3>
+              <p className="text-white/90 font-medium">
+                Where I solve my hardest problems. Something about the water clears my head.
+              </p>
             </GlassCard>
 
-            <GlassCard hover3D glowColor="cyan" className="p-8 space-y-6">
-              <h3 className="text-2xl font-bold gradient-text flex items-center gap-2">
-                <FaCloud className="text-cyan-400" />
-                Cloud & DevOps
-              </h3>
-              <div className="space-y-4">
-                <SkillBar name="AWS Services" level={82} delay={0} />
-                <SkillBar name="Docker" level={80} delay={100} />
-                <SkillBar name="Git & GitHub" level={94} delay={200} />
-                <SkillBar name="CI/CD Pipelines" level={78} delay={300} />
-              </div>
+            <GlassCard hover3D glowColor="green" className="p-8 text-center space-y-4">
+              <div className="text-6xl mb-4">💪</div>
+              <h3 className="text-2xl font-bold gradient-text">Gym</h3>
+              <p className="text-white/90 font-medium">
+                Consistency at the gym taught me consistency in code. Progressive overload works for both.
+              </p>
             </GlassCard>
+          </div>
 
-            <GlassCard hover3D glowColor="green" className="p-8 space-y-6">
-              <h3 className="text-2xl font-bold gradient-text flex items-center gap-2">
-                <FaMobile className="text-green-400" />
-                Other Skills
-              </h3>
-              <div className="space-y-4">
-                <SkillBar name="System Design" level={83} delay={0} />
-                <SkillBar name="Agile/Scrum" level={88} delay={100} />
-                <SkillBar name="Technical Writing" level={91} delay={200} />
-                <SkillBar name="Problem Solving" level={96} delay={300} />
-              </div>
-            </GlassCard>
+          <div className="text-center mt-12">
+            <a
+              href="/blog"
+              className="inline-block px-10 py-5 glass rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 glow-border"
+            >
+              Read More on My Blog →
+            </a>
           </div>
         </div>
       </section>
