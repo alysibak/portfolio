@@ -1,9 +1,11 @@
 import "./globals.css";
+import "./theme-globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import ThemeProvider from "@/components/ThemeProvider";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import ScrollProgress from "@/components/ScrollProgress";
 import SkipLink from "@/components/SkipLink";
+import AnimatedBackground from "@/components/AnimatedBackground";
 import {
   generateMetadata as generateSEOMetadata,
   getPersonStructuredData,
@@ -60,14 +62,15 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className="antialiased"
+        className="antialiased animated-gradient-bg dark:animated-gradient-bg-dark overflow-x-hidden"
         suppressHydrationWarning
       >
+        <AnimatedBackground />
         <SkipLink />
         <ScrollProgress />
         <ErrorBoundary>
           <ThemeProvider>
-            <main id="main-content">
+            <main id="main-content" className="relative z-10">
               {children}
             </main>
             <Analytics />
