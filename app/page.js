@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaCode, FaBriefcase, FaRocket, FaLightbulb, FaChartLine, FaUsers, FaAward, FaStar, FaArrowRight, FaTerminal, FaDatabase, FaCloud, FaMobile, FaLaptopCode } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaCode, FaBriefcase, FaRocket, FaLightbulb, FaChartLine, FaUsers, FaAward } from "react-icons/fa";
 import Image from "next/image";
-import { useTheme } from "@/components/ThemeProvider";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import GlassCard from "@/components/GlassCard";
@@ -42,45 +41,7 @@ const AnimatedCounter = ({ end, suffix = "", duration = 2000 }) => {
   return <span ref={ref}>{count}{suffix}</span>;
 };
 
-const SkillBar = ({ name, level, icon: Icon, delay = 0 }) => {
-  const [width, setWidth] = useState(0);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setWidth(level), delay);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [level, delay]);
-
-  return (
-    <div ref={ref} className="space-y-2">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {Icon && <Icon className="text-blue-400" />}
-          <span className="text-white font-semibold">{name}</span>
-        </div>
-        <span className="text-blue-400 font-bold">{level}%</span>
-      </div>
-      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 rounded-full transition-all duration-1000 ease-out"
-          style={{ width: `${width}%` }}
-        />
-      </div>
-    </div>
-  );
-};
-
 export default function HomePage() {
-  const { darkMode } = useTheme();
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -93,97 +54,92 @@ export default function HomePage() {
     <div className="min-h-screen">
       <Navigation />
 
-      {/* HERO - Full Screen Split Layout */}
-      <section className="min-h-screen relative flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-700" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      {/* HERO - Notebook Page Style */}
+      <section className="min-h-screen relative flex items-center pt-32 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Content */}
             <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="inline-block">
-                  <span className="px-4 py-2 bg-blue-500/20 text-blue-300 rounded-full text-sm font-semibold border border-blue-500/30">
-                    🚀 Available for Summer 2026 Co-op
+              <div className="space-y-6">
+                {/* Handwritten Tag */}
+                <div className="inline-block px-6 py-2 bg-[#FFF9C4] border-2 border-[#F9A825] rounded transform -rotate-2">
+                  <span className="text-base font-['Kalam'] font-bold text-[#8B4513]">
+                    Available for Summer 2026 Co-op
                   </span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight">
-                  <span className="gradient-text">Building AI-Powered</span>
-                  <br />
-                  <span className="text-white">Solutions That</span>
-                  <br />
-                  <span className="neon-text">Actually Matter</span>
+
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-['Caveat'] font-bold leading-tight text-[#3E2723]">
+                  <span className="gradient-text block">Aly Sibak</span>
+                  <span className="text-[#6B4423] block mt-2">Full-Stack Developer</span>
+                  <span className="text-[#8B4513] block mt-2">Problem Solver</span>
                 </h1>
-                <p className="text-xl text-white/90 leading-relaxed max-w-xl font-medium">
-                  3rd-year CS student who transformed food safety at P&P Optica with AI hyperspectral imaging.
-                  I don't just write code—I solve problems that impact real people.
+
+                <p className="text-lg text-[#5D4037] leading-relaxed max-w-xl font-['Merriweather']">
+                  3rd-year CS student at University of Guelph. Building production systems at P&P Optica that process millions of pounds of food daily.
+                  I write code that solves real problems for real people.
                 </p>
               </div>
 
-              {/* Quick Stats */}
+              {/* Quick Stats - Notebook Style */}
               <div className="grid grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="text-4xl font-black gradient-text">
+                <div className="text-center p-4 bg-white/60 border-2 border-[#D4C4B0] rounded transform rotate-1">
+                  <div className="text-4xl font-['Caveat'] font-bold text-[#8B4513]">
                     <AnimatedCounter end={250} suffix="+" />
                   </div>
-                  <div className="text-sm text-white/80 font-semibold">Students Taught</div>
+                  <div className="text-sm text-[#6B4423] font-['Kalam'] font-semibold">Students Taught</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-4xl font-black gradient-text">
+                <div className="text-center p-4 bg-white/60 border-2 border-[#D4C4B0] rounded transform -rotate-1">
+                  <div className="text-4xl font-['Caveat'] font-bold text-[#A0522D]">
                     <AnimatedCounter end={83} suffix="%" />
                   </div>
-                  <div className="text-sm text-white/80 font-semibold">GPA Achieved</div>
+                  <div className="text-sm text-[#6B4423] font-['Kalam'] font-semibold">GPA</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-4xl font-black gradient-text">
+                <div className="text-center p-4 bg-white/60 border-2 border-[#D4C4B0] rounded transform rotate-2">
+                  <div className="text-4xl font-['Caveat'] font-bold text-[#D2691E]">
                     <AnimatedCounter end={6} suffix="+" />
                   </div>
-                  <div className="text-sm text-white/80 font-semibold">Projects Built</div>
+                  <div className="text-sm text-[#6B4423] font-['Kalam'] font-semibold">Projects</div>
                 </div>
               </div>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons - Notebook Style */}
               <div className="flex flex-wrap gap-4">
                 <a
                   href="/projects"
-                  className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl text-white font-bold hover:scale-105 transition-all duration-300 pulse-glow flex items-center gap-2"
+                  className="group px-8 py-4 bg-[#8B4513] border-2 border-[#6B4423] rounded text-[#FFF8E7] font-['Kalam'] font-bold hover:bg-[#A0522D] transition-all duration-300 hover:shadow-lg"
                 >
-                  <span>View My Work</span>
-                  <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  View My Work →
                 </a>
                 <a
                   href="/AlySibakResume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group px-8 py-4 glass rounded-xl text-white font-bold hover:scale-105 transition-all duration-300 flex items-center gap-2 glow-border"
+                  className="group px-8 py-4 bg-white border-2 border-[#8B4513] rounded text-[#8B4513] font-['Kalam'] font-bold hover:bg-[#FFF8E7] transition-all duration-300"
                 >
-                  <FaDownload className="group-hover:animate-bounce" />
-                  <span>Resume</span>
+                  <FaDownload className="inline mr-2" />
+                  Resume
                 </a>
               </div>
 
-              {/* Social Links */}
+              {/* Social Links - Sketched Style */}
               <div className="flex gap-4">
-                <a href="https://github.com/alysibak" target="_blank" rel="noopener noreferrer" className="p-3 glass rounded-lg hover:scale-110 transition-all">
-                  <FaGithub className="text-xl text-white" />
+                <a href="https://github.com/alysibak" target="_blank" rel="noopener noreferrer" className="p-3 bg-white border-2 border-[#D4C4B0] rounded hover:border-[#8B4513] transition-all">
+                  <FaGithub className="text-xl text-[#6B4423]" />
                 </a>
-                <a href="https://www.linkedin.com/in/alysibak" target="_blank" rel="noopener noreferrer" className="p-3 glass rounded-lg hover:scale-110 transition-all">
-                  <FaLinkedin className="text-xl text-white" />
+                <a href="https://www.linkedin.com/in/alysibak" target="_blank" rel="noopener noreferrer" className="p-3 bg-white border-2 border-[#D4C4B0] rounded hover:border-[#8B4513] transition-all">
+                  <FaLinkedin className="text-xl text-[#6B4423]" />
                 </a>
-                <a href="mailto:asibak@uoguelph.ca" className="p-3 glass rounded-lg hover:scale-110 transition-all">
-                  <FaEnvelope className="text-xl text-white" />
+                <a href="mailto:asibak@uoguelph.ca" className="p-3 bg-white border-2 border-[#D4C4B0] rounded hover:border-[#8B4513] transition-all">
+                  <FaEnvelope className="text-xl text-[#6B4423]" />
                 </a>
               </div>
             </div>
 
-            {/* Right: Image + Floating Cards */}
+            {/* Right: Image + Floating Note Cards */}
             <div className="relative h-[600px] hidden lg:block">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <div className="relative">
-                  <div className="w-80 h-80 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 p-2 shimmer">
+                  <div className="w-80 h-80 rounded-full border-4 border-[#8B4513] p-2 shadow-lg">
                     <Image
                       src="/profile.jpeg"
                       alt="Aly Sibak"
@@ -194,41 +150,41 @@ export default function HomePage() {
                     />
                   </div>
 
-                  {/* Floating Achievement Cards */}
+                  {/* Floating Note Cards */}
                   <div className="absolute -top-10 -right-20 floating" style={{ animationDelay: '0s' }}>
-                    <GlassCard glowColor="blue" className="p-4 space-y-1">
+                    <div className="p-4 bg-[#FFF9C4] border-2 border-[#F9A825] rounded shadow-md transform rotate-3">
                       <div className="flex items-center gap-2">
-                        <FaCode className="text-2xl text-blue-400" />
+                        <FaCode className="text-2xl text-[#D2691E]" />
                         <div>
-                          <div className="text-xs text-white/60">Tech Stack</div>
-                          <div className="font-bold text-white">10+ Technologies</div>
+                          <div className="text-xs text-[#8B4513] font-['Kalam']">Tech Stack</div>
+                          <div className="font-bold text-[#6B4423] font-['Caveat'] text-lg">10+ Technologies</div>
                         </div>
                       </div>
-                    </GlassCard>
+                    </div>
                   </div>
 
                   <div className="absolute -bottom-10 -left-20 floating" style={{ animationDelay: '0.5s' }}>
-                    <GlassCard glowColor="purple" className="p-4 space-y-1">
+                    <div className="p-4 bg-[#FFECB3] border-2 border-[#FFA726] rounded shadow-md transform -rotate-3">
                       <div className="flex items-center gap-2">
-                        <FaAward className="text-2xl text-purple-400" />
+                        <FaAward className="text-2xl text-[#A0522D]" />
                         <div>
-                          <div className="text-xs text-white/60">Achievement</div>
-                          <div className="font-bold text-white">Dean's List</div>
+                          <div className="text-xs text-[#8B4513] font-['Kalam']">Achievement</div>
+                          <div className="font-bold text-[#6B4423] font-['Caveat'] text-lg">Dean's List</div>
                         </div>
                       </div>
-                    </GlassCard>
+                    </div>
                   </div>
 
                   <div className="absolute top-20 -left-32 floating" style={{ animationDelay: '1s' }}>
-                    <GlassCard glowColor="cyan" className="p-4 space-y-1">
+                    <div className="p-4 bg-[#FFCCBC] border-2 border-[#FF7043] rounded shadow-md transform rotate-2">
                       <div className="flex items-center gap-2">
-                        <FaUsers className="text-2xl text-cyan-400" />
+                        <FaUsers className="text-2xl text-[#8B4513]" />
                         <div>
-                          <div className="text-xs text-white/60">Teaching</div>
-                          <div className="font-bold text-white">TA Experience</div>
+                          <div className="text-xs text-[#8B4513] font-['Kalam']">Teaching</div>
+                          <div className="font-bold text-[#6B4423] font-['Caveat'] text-lg">TA Experience</div>
                         </div>
                       </div>
-                    </GlassCard>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -237,75 +193,73 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BENTO GRID - Showcase Different Aspects */}
+      {/* WHY WORK WITH ME - Notebook Cards */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-black gradient-text mb-4">Why Work With Me?</h2>
-            <p className="text-xl text-white/90 font-medium">I bring more than just code to the table</p>
+            <h2 className="text-5xl font-['Caveat'] font-bold gradient-text mb-4">Why Work With Me?</h2>
+            <p className="text-xl text-[#6B4423] font-['Merriweather']">More than just code</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-            {/* Large Feature Card - Spans 2 columns */}
-            <GlassCard hover3D glowColor="blue" className="lg:col-span-2 p-8 space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Real-World Impact */}
+            <GlassCard hover3D glowColor="brown" className="lg:col-span-2 p-8 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-blue-500/20 rounded-lg">
-                  <FaBriefcase className="text-3xl text-blue-400" />
+                <div className="p-3 bg-[#D2691E]/20 rounded">
+                  <FaBriefcase className="text-3xl text-[#8B4513]" />
                 </div>
-                <h3 className="text-2xl font-bold gradient-text">Real-World Impact</h3>
+                <h3 className="text-2xl font-['Caveat'] font-bold text-[#6B4423]">Real-World Impact</h3>
               </div>
-              <p className="text-white/95 text-lg leading-relaxed font-medium">
-                At P&P Optica, I built AI-powered hyperspectral imaging systems that detect contamination
-                in food products. This isn't theoretical—my code helps prevent foodborne illness in real products
-                on real shelves.
+              <p className="text-[#5D4037] text-lg leading-relaxed font-['Merriweather']">
+                At P&P Optica, I built systems that detect contamination in food products.
+                This isn't theoretical - my code helps prevent foodborne illness in real products on real shelves.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="space-y-1">
-                  <div className="text-3xl font-bold text-blue-400">40%</div>
-                  <div className="text-sm text-white/60">Faster Deployments</div>
+                  <div className="text-3xl font-['Caveat'] font-bold text-[#D2691E]">75%</div>
+                  <div className="text-sm text-[#8B4513] font-['Kalam']">Faster Deployments</div>
                 </div>
                 <div className="space-y-1">
-                  <div className="text-3xl font-bold text-cyan-400">60%</div>
-                  <div className="text-sm text-white/60">Less Onboarding Time</div>
+                  <div className="text-3xl font-['Caveat'] font-bold text-[#A0522D]">30%</div>
+                  <div className="text-sm text-[#8B4513] font-['Kalam']">Workflow Efficiency</div>
                 </div>
               </div>
             </GlassCard>
 
             {/* Teaching Excellence */}
-            <GlassCard hover3D glowColor="purple" className="p-8 space-y-4">
-              <div className="p-3 bg-purple-500/20 rounded-lg w-fit">
-                <FaUsers className="text-3xl text-purple-400" />
+            <GlassCard hover3D glowColor="orange" className="p-8 space-y-4">
+              <div className="p-3 bg-[#A0522D]/20 rounded w-fit">
+                <FaUsers className="text-3xl text-[#8B4513]" />
               </div>
-              <h3 className="text-2xl font-bold gradient-text">Teaching & Mentoring</h3>
-              <p className="text-white/95 font-medium">
+              <h3 className="text-2xl font-['Caveat'] font-bold text-[#6B4423]">Teaching & Mentoring</h3>
+              <p className="text-[#5D4037] font-['Merriweather']">
                 As a TA for 250+ students, I learned how to explain complex concepts simply.
-                This makes me a better collaborator and team player.
+                Better teacher = better teammate.
               </p>
             </GlassCard>
 
             {/* Quick Learner */}
-            <GlassCard hover3D glowColor="cyan" className="p-8 space-y-4">
-              <div className="p-3 bg-cyan-500/20 rounded-lg w-fit">
-                <FaLightbulb className="text-3xl text-cyan-400" />
+            <GlassCard hover3D glowColor="sepia" className="p-8 space-y-4">
+              <div className="p-3 bg-[#CD853F]/20 rounded w-fit">
+                <FaLightbulb className="text-3xl text-[#D2691E]" />
               </div>
-              <h3 className="text-2xl font-bold gradient-text">Fast Learner</h3>
-              <p className="text-white/95 font-medium">
-                Picked up React, TypeScript, and AWS on the job. I thrive on learning new technologies
-                and adapting to new challenges quickly.
+              <h3 className="text-2xl font-['Caveat'] font-bold text-[#6B4423]">Fast Learner</h3>
+              <p className="text-[#5D4037] font-['Merriweather']">
+                Picked up React, TypeScript, and AWS on the job. Give me a new tech stack, I'll figure it out.
               </p>
             </GlassCard>
 
-            {/* Problem Solver */}
-            <GlassCard hover3D glowColor="green" className="lg:col-span-2 p-8 space-y-4">
+            {/* Results-Driven */}
+            <GlassCard hover3D glowColor="tan" className="lg:col-span-2 p-8 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-green-500/20 rounded-lg">
-                  <FaChartLine className="text-3xl text-green-400" />
+                <div className="p-3 bg-[#8B4513]/20 rounded">
+                  <FaChartLine className="text-3xl text-[#A0522D]" />
                 </div>
-                <h3 className="text-2xl font-bold gradient-text">Results-Driven Mindset</h3>
+                <h3 className="text-2xl font-['Caveat'] font-bold text-[#6B4423]">Results-Driven</h3>
               </div>
-              <p className="text-white/90 text-lg font-medium">
-                I don't just complete tasks—I optimize them. Whether it's cutting deployment time or
-                improving system reliability, I always look for ways to add measurable value.
+              <p className="text-[#5D4037] text-lg font-['Merriweather']">
+                I don't just complete tasks - I optimize them. Whether it's cutting deployment time or
+                improving reliability, I always look for measurable impact.
               </p>
             </GlassCard>
           </div>
@@ -313,34 +267,31 @@ export default function HomePage() {
       </section>
 
       {/* BEYOND CODE - Personal Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-black gradient-text mb-4">Beyond Code</h2>
-            <p className="text-xl text-white/90 font-medium">Because developers are humans too</p>
+            <h2 className="text-5xl font-['Caveat'] font-bold gradient-text mb-4">Beyond Code</h2>
+            <p className="text-xl text-[#6B4423] font-['Merriweather']">Because developers are humans too</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <GlassCard hover3D glowColor="blue" className="p-8 text-center space-y-4">
-              <div className="text-6xl mb-4">⚽</div>
-              <h3 className="text-2xl font-bold gradient-text">Soccer</h3>
-              <p className="text-white/90 font-medium">
+            <GlassCard hover3D glowColor="brown" className="p-8 text-center space-y-4">
+              <div className="text-4xl font-['Caveat'] text-[#8B4513] mb-4">Soccer</div>
+              <p className="text-[#5D4037] font-['Merriweather']">
                 My moving meditation. Best debugging happens on the field, not at the desk.
               </p>
             </GlassCard>
 
-            <GlassCard hover3D glowColor="cyan" className="p-8 text-center space-y-4">
-              <div className="text-6xl mb-4">🏊</div>
-              <h3 className="text-2xl font-bold gradient-text">Swimming</h3>
-              <p className="text-white/90 font-medium">
+            <GlassCard hover3D glowColor="orange" className="p-8 text-center space-y-4">
+              <div className="text-4xl font-['Caveat'] text-[#A0522D] mb-4">Swimming</div>
+              <p className="text-[#5D4037] font-['Merriweather']">
                 Where I solve my hardest problems. Something about the water clears my head.
               </p>
             </GlassCard>
 
-            <GlassCard hover3D glowColor="green" className="p-8 text-center space-y-4">
-              <div className="text-6xl mb-4">💪</div>
-              <h3 className="text-2xl font-bold gradient-text">Gym</h3>
-              <p className="text-white/90 font-medium">
+            <GlassCard hover3D glowColor="sepia" className="p-8 text-center space-y-4">
+              <div className="text-4xl font-['Caveat'] text-[#D2691E] mb-4">Gym</div>
+              <p className="text-[#5D4037] font-['Merriweather']">
                 Consistency at the gym taught me consistency in code. Progressive overload works for both.
               </p>
             </GlassCard>
@@ -349,7 +300,7 @@ export default function HomePage() {
           <div className="text-center mt-12">
             <a
               href="/blog"
-              className="inline-block px-10 py-5 glass rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 glow-border"
+              className="inline-block px-10 py-5 bg-white border-2 border-[#8B4513] rounded text-[#8B4513] text-lg font-['Kalam'] font-bold hover:bg-[#FFF8E7] transition-all duration-300"
             >
               Read More on My Blog →
             </a>
@@ -357,41 +308,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA SECTION - Large, Bold */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <GlassCard glowColor="blue" className="p-16 space-y-8">
+      {/* CTA SECTION */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <GlassCard glowColor="brown" className="p-16 space-y-8">
             <div className="space-y-4">
-              <h2 className="text-5xl sm:text-6xl font-black">
-                <span className="gradient-text">Let's Build</span>
-                <br />
-                <span className="text-white">Something Great</span>
+              <h2 className="text-5xl sm:text-6xl font-['Caveat'] font-bold">
+                <span className="gradient-text block">Let's Build</span>
+                <span className="text-[#6B4423] block mt-2">Something Great</span>
               </h2>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto font-medium">
-                I'm looking for a Summer 2026 Co-op where I can bring my skills in full-stack development,
-                AI integration, and problem-solving to make a real impact.
+              <p className="text-xl text-[#5D4037] max-w-2xl mx-auto font-['Merriweather']">
+                Looking for Summer 2026 Co-op. I bring full-stack skills, production experience, and a drive to solve real problems.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
                 href="/contact"
-                className="group px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 pulse-glow flex items-center gap-2"
+                className="px-10 py-5 bg-[#8B4513] border-2 border-[#6B4423] rounded text-[#FFF8E7] text-lg font-['Kalam'] font-bold hover:bg-[#A0522D] transition-all duration-300"
               >
-                <span>Get In Touch</span>
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                Get In Touch →
               </a>
               <a
                 href="/projects"
-                className="group px-10 py-5 glass rounded-xl text-white text-lg font-bold hover:scale-105 transition-all duration-300 glow-border flex items-center gap-2"
+                className="px-10 py-5 bg-white border-2 border-[#8B4513] rounded text-[#8B4513] text-lg font-['Kalam'] font-bold hover:bg-[#FFF8E7] transition-all duration-300"
               >
-                <FaRocket />
-                <span>See My Projects</span>
+                <FaRocket className="inline mr-2" />
+                See My Projects
               </a>
             </div>
           </GlassCard>
