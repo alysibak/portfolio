@@ -117,7 +117,7 @@ export default function HomePage() {
                   <br />
                   <span className="neon-text">Actually Matter</span>
                 </h1>
-                <p className="text-xl text-white/70 leading-relaxed max-w-xl">
+                <p className="text-xl text-white/90 leading-relaxed max-w-xl font-medium">
                   3rd-year CS student who transformed food safety at P&P Optica with AI hyperspectral imaging.
                   I don't just write code—I solve problems that impact real people.
                 </p>
@@ -129,19 +129,19 @@ export default function HomePage() {
                   <div className="text-4xl font-black gradient-text">
                     <AnimatedCounter end={250} suffix="+" />
                   </div>
-                  <div className="text-sm text-white/60">Students Taught</div>
+                  <div className="text-sm text-white/80 font-semibold">Students Taught</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-black gradient-text">
                     <AnimatedCounter end={83} suffix="%" />
                   </div>
-                  <div className="text-sm text-white/60">GPA Achieved</div>
+                  <div className="text-sm text-white/80 font-semibold">GPA Achieved</div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-black gradient-text">
                     <AnimatedCounter end={6} suffix="+" />
                   </div>
-                  <div className="text-sm text-white/60">Projects Built</div>
+                  <div className="text-sm text-white/80 font-semibold">Projects Built</div>
                 </div>
               </div>
 
@@ -242,7 +242,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black gradient-text mb-4">Why Work With Me?</h2>
-            <p className="text-xl text-white/70">I bring more than just code to the table</p>
+            <p className="text-xl text-white/90 font-medium">I bring more than just code to the table</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
@@ -254,7 +254,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-2xl font-bold gradient-text">Real-World Impact</h3>
               </div>
-              <p className="text-white/80 text-lg leading-relaxed">
+              <p className="text-white/95 text-lg leading-relaxed font-medium">
                 At P&P Optica, I built AI-powered hyperspectral imaging systems that detect contamination
                 in food products. This isn't theoretical—my code helps prevent foodborne illness in real products
                 on real shelves.
@@ -277,7 +277,7 @@ export default function HomePage() {
                 <FaUsers className="text-3xl text-purple-400" />
               </div>
               <h3 className="text-2xl font-bold gradient-text">Teaching & Mentoring</h3>
-              <p className="text-white/80">
+              <p className="text-white/95 font-medium">
                 As a TA for 250+ students, I learned how to explain complex concepts simply.
                 This makes me a better collaborator and team player.
               </p>
@@ -289,21 +289,21 @@ export default function HomePage() {
                 <FaLightbulb className="text-3xl text-cyan-400" />
               </div>
               <h3 className="text-2xl font-bold gradient-text">Fast Learner</h3>
-              <p className="text-white/80">
+              <p className="text-white/95 font-medium">
                 Picked up React, TypeScript, and AWS on the job. I thrive on learning new technologies
                 and adapting to new challenges quickly.
               </p>
             </GlassCard>
 
             {/* Problem Solver */}
-            <GlassCard hover3D glowColor="pink" className="lg:col-span-2 p-8 space-y-4">
+            <GlassCard hover3D glowColor="green" className="lg:col-span-2 p-8 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-pink-500/20 rounded-lg">
-                  <FaChartLine className="text-3xl text-pink-400" />
+                <div className="p-3 bg-green-500/20 rounded-lg">
+                  <FaChartLine className="text-3xl text-green-400" />
                 </div>
                 <h3 className="text-2xl font-bold gradient-text">Results-Driven Mindset</h3>
               </div>
-              <p className="text-white/80 text-lg">
+              <p className="text-white/90 text-lg font-medium">
                 I don't just complete tasks—I optimize them. Whether it's cutting deployment time or
                 improving system reliability, I always look for ways to add measurable value.
               </p>
@@ -317,7 +317,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-black gradient-text mb-4">Tech Arsenal</h2>
-            <p className="text-xl text-white/70">Tools I use to build exceptional software</p>
+            <p className="text-xl text-white/90 font-medium">Tools I use to build exceptional software</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -360,9 +360,9 @@ export default function HomePage() {
               </div>
             </GlassCard>
 
-            <GlassCard hover3D glowColor="pink" className="p-8 space-y-6">
+            <GlassCard hover3D glowColor="green" className="p-8 space-y-6">
               <h3 className="text-2xl font-bold gradient-text flex items-center gap-2">
-                <FaMobile className="text-pink-400" />
+                <FaMobile className="text-green-400" />
                 Other Skills
               </h3>
               <div className="space-y-4">
@@ -391,7 +391,7 @@ export default function HomePage() {
                 <br />
                 <span className="text-white">Something Great</span>
               </h2>
-              <p className="text-xl text-white/70 max-w-2xl mx-auto">
+              <p className="text-xl text-white/90 max-w-2xl mx-auto font-medium">
                 I'm looking for a Summer 2026 Co-op where I can bring my skills in full-stack development,
                 AI integration, and problem-solving to make a real impact.
               </p>
