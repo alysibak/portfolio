@@ -18,9 +18,9 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-      <div className="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-lg font-semibold text-gray-900">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-strong border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <Link href="/" className="text-xl font-bold text-white">
           Aly Sibak
         </Link>
 
@@ -29,10 +29,10 @@ export default function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm transition-colors ${
+              className={`text-sm font-medium transition-colors ${
                 isActive(link.href)
-                  ? 'text-gray-900 font-medium'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'text-white'
+                  : 'text-white/70 hover:text-white'
               }`}
             >
               {link.label}
