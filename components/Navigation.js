@@ -1,114 +1,142 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { FaSun, FaMoon, FaHome, FaCode, FaBriefcase, FaRocket, FaEnvelope } from "react-icons/fa";
 import { useTheme } from "./ThemeProvider";
 import { usePathname } from "next/navigation";
 
 export default function Navigation() {
   const { darkMode, toggleTheme } = useTheme();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = (path) => pathname === path;
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/skills", label: "Skills" },
-    { href: "/experience", label: "Experience" },
-    { href: "/projects", label: "Projects" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: "Home", icon: FaHome },
+    { href: "/skills", label: "Skills", icon: FaCode },
+    { href: "/experience", label: "Experience", icon: FaBriefcase },
+    { href: "/projects", label: "Projects", icon: FaRocket },
+    { href: "/contact", label: "Contact", icon: FaEnvelope },
   ];
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        darkMode
-          ? 'bg-gray-900/95 border-gray-700'
-          : 'bg-white/95 border-blue-200'
-      } backdrop-blur-xl border-b`}>
-        <div className="container mx-auto flex justify-between items-center px-4 py-3 max-w-6xl">
-          <Link href="/" className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-            Aly Sibak
-          </Link>
+      {/* Floating Navigation - Shows after scroll */}
+      <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${
+        scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+      }`}>
+        <div className="glass px-6 py-3 rounded-full shadow-2xl border border-white/20">
+          <div className="flex items-center gap-2">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`group relative px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
+                    isActive(link.href)
+                      ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                  }`}
+                  title={link.label}
+                >
+                  <Icon className="text-sm" />
+                  <span className={`text-sm font-semibold hidden lg:inline ${
+                    isActive(link.href) ? 'block' : ''
+                  }`}>
+                    {link.label}
+                  </span>
+                </Link>
+              );
+            })}
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6 lg:space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`font-medium transition-colors duration-300 hover:text-blue-600 text-sm lg:text-base ${
-                  isActive(link.href) ? 'relative font-semibold group' : ''
-                }`}
-              >
-                {link.label}
-                {isActive(link.href) && (
-                  <span className="absolute bottom-[-4px] left-0 w-full h-0.5 bg-gradient-to-r from-blue-600 to-cyan-600"></span>
-                )}
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-              aria-label="Toggle mobile menu"
-            >
-              <div className="w-6 h-6 flex flex-col justify-center items-center">
-                <span className={`bg-current block h-0.5 w-6 rounded-sm transition-all duration-300 ${
-                  mobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'
-                }`}></span>
-                <span className={`bg-current block h-0.5 w-6 rounded-sm transition-all duration-300 ${
-                  mobileMenuOpen ? 'opacity-0' : 'opacity-100'
-                }`}></span>
-                <span className={`bg-current block h-0.5 w-6 rounded-sm transition-all duration-300 ${
-                  mobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'
-                }`}></span>
-              </div>
-            </button>
-
+            {/* Theme Toggle */}
+            <div className="w-px h-6 bg-white/20 mx-2" />
             <button
               onClick={toggleTheme}
-              className="p-2 md:p-3 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg hover:scale-105 transition-all duration-300"
+              className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
               aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
             >
-              {darkMode ? <FaSun className="text-sm md:text-base" /> : <FaMoon className="text-sm md:text-base" />}
+              {darkMode ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
+      {/* Top Bar - Shows when not scrolled */}
+      <div className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        scrolled ? 'opacity-0 -translate-y-full pointer-events-none' : 'opacity-100 translate-y-0'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
+          <Link href="/" className="text-2xl font-black gradient-text">
+            Aly Sibak
+          </Link>
 
-      {/* Mobile Menu */}
-      <div className={`fixed top-0 left-0 right-0 z-45 md:hidden transition-all duration-300 ${
-        mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
-      } ${darkMode ? 'bg-gray-900' : 'bg-white'} shadow-xl`} style={{ paddingTop: '76px' }}>
-        <div className="px-4 py-6 space-y-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`block py-3 px-4 rounded-lg transition-colors duration-300 hover:bg-blue-50 dark:hover:bg-gray-800 ${
-                isActive(link.href) ? 'font-semibold text-blue-600' : ''
-              }`}
-              onClick={() => setMobileMenuOpen(false)}
+          <div className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`font-semibold transition-all duration-300 ${
+                    isActive(link.href)
+                      ? 'text-white'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            <button
+              onClick={toggleTheme}
+              className="p-3 rounded-full glass text-white hover:scale-110 transition-all duration-300 shadow-lg"
+              aria-label={`Switch to ${darkMode ? 'light' : 'dark'} mode`}
             >
-              {link.label}
-            </Link>
-          ))}
+              {darkMode ? <FaSun className="text-sm" /> : <FaMoon className="text-sm" />}
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-6 left-4 right-4 z-50">
+        <div className="glass px-4 py-3 rounded-full shadow-2xl border border-white/20">
+          <div className="flex justify-around items-center">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative p-3 rounded-full transition-all duration-300 ${
+                    isActive(link.href)
+                      ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg scale-110'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                  }`}
+                  title={link.label}
+                >
+                  <Icon className="text-lg" />
+                  {isActive(link.href) && (
+                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
     </>
   );
 }
