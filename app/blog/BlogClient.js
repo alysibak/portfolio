@@ -11,10 +11,10 @@ export default function BlogClient() {
     <div className="min-h-screen animated-gradient-bg">
       <Navigation />
 
-      <section className="pt-32 pb-20 px-8 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">Writing</h1>
-          <p className="text-lg text-white/40 mb-20 max-w-xl font-light">
+      <section className="pt-40 pb-32 px-6 relative z-10">
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-6xl md:text-7xl font-black text-white mb-6 tracking-tight">Writing</h1>
+          <p className="text-xl text-white/40 mb-24 max-w-xl font-light">
             Lessons from actually shipping code.
           </p>
 
@@ -23,23 +23,23 @@ export default function BlogClient() {
               <Link
                 key={post.id}
                 href={`/blog/${post.id}`}
-                className="block glass smooth-transition px-8 py-8 group"
+                className="block glass smooth-transition px-10 py-10 group glow-on-hover"
               >
-                <div className="flex items-center gap-3 mb-3 text-xs text-white/30 font-mono">
+                <div className="flex items-center gap-3 mb-4 text-xs text-white/30 font-mono">
                   <span>{post.date}</span>
                   <span>•</span>
                   <span>{post.readTime}</span>
                 </div>
 
-                <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-white/90 smooth-transition">
+                <h2 className="text-3xl font-bold text-white mb-4 group-hover:text-white/90 smooth-transition">
                   {post.title}
                 </h2>
 
-                <p className="text-white/60 leading-relaxed">
+                <p className="text-white/50 leading-relaxed text-lg">
                   {post.excerpt}
                 </p>
 
-                <div className="mt-4 text-sm text-white/40 group-hover:text-white/60 smooth-transition">
+                <div className="mt-6 text-sm text-white/30 group-hover:text-white/50 smooth-transition">
                   Read →
                 </div>
               </Link>
