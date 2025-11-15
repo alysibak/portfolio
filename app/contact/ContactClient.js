@@ -42,12 +42,12 @@ export default function ContactClient() {
             <div className="glass p-10 smooth-transition glow-on-hover">
               <h3 className="text-xs text-white/30 mb-4 font-mono tracking-wider">LINKEDIN</h3>
               <a
-                href="https://www.linkedin.com/in/alysibak"
+                href="https://www.linkedin.com/in/aly-sibak-721b85252/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-white hover:text-white/80 smooth-transition"
               >
-                linkedin.com/in/alysibak
+                linkedin.com/in/aly-sibak-721b85252
               </a>
             </div>
           </div>

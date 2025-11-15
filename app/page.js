@@ -36,7 +36,7 @@ export default function HomePage() {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/alysibak"
+              href="https://www.linkedin.com/in/aly-sibak-721b85252/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/40 hover:text-white smooth-transition text-sm"
