@@ -1,149 +1,152 @@
 "use client";
 
-import React from "react";
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight, FaRocket, FaCode, FaBriefcase } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope, FaChevronDown } from "react-icons/fa";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { projects } from "@/lib/data";
 
 export default function HomePage() {
+  const [expandedProject, setExpandedProject] = useState(null);
+
   return (
     <div className="min-h-screen animated-gradient-bg">
       <Navigation />
 
-      {/* Hero */}
-      <section className="pt-40 pb-32 px-4 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-8 floating">
-            <span className="inline-block px-4 py-2 badge text-white text-sm font-semibold rounded-full">
-              🚀 Available for Summer 2026 Co-op
-            </span>
-          </div>
-
-          <h1 className="text-6xl md:text-7xl font-black text-white mb-8 leading-tight text-shadow">
-            Hi, I'm <span className="gradient-text">Aly Sibak</span>
+      {/* Minimal Hero */}
+      <section className="pt-48 pb-20 px-4 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-7xl md:text-8xl font-black text-white mb-6 leading-tight tracking-tight">
+            Aly Sibak
           </h1>
 
-          <p className="text-2xl md:text-3xl text-white/90 mb-12 leading-relaxed max-w-3xl text-shadow">
-            I build production systems that process millions of pounds of food daily.
-            3rd-year CS student who ships real code at
-            <span className="font-bold text-white"> P&P Optica</span>.
+          <p className="text-xl md:text-2xl text-white/60 mb-16 leading-relaxed max-w-2xl font-light">
+            Building production systems at P&P Optica. CS @ Guelph.
           </p>
 
-          {/* Social Links */}
-          <div className="flex flex-wrap gap-4 mb-16">
+          {/* Minimal Contact Links */}
+          <div className="flex gap-6 mb-32">
             <a
               href="https://github.com/alysibak"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 glossy-button text-white font-semibold rounded-xl smooth-transition"
+              className="text-white/60 hover:text-white smooth-transition text-sm font-medium"
             >
-              <FaGithub />
-              <span>GitHub</span>
+              GitHub
             </a>
             <a
               href="https://www.linkedin.com/in/alysibak"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 glossy-button text-white font-semibold rounded-xl smooth-transition"
+              className="text-white/60 hover:text-white smooth-transition text-sm font-medium"
             >
-              <FaLinkedin />
-              <span>LinkedIn</span>
+              LinkedIn
             </a>
             <a
               href="mailto:asibak@uoguelph.ca"
-              className="inline-flex items-center gap-2 px-6 py-3 glossy-button text-white font-semibold rounded-xl smooth-transition"
+              className="text-white/60 hover:text-white smooth-transition text-sm font-medium"
             >
-              <FaEnvelope />
-              <span>Email</span>
+              Email
             </a>
           </div>
 
-          {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-6 mb-20">
-            <div className="glass p-6 rounded-2xl smooth-transition">
-              <div className="text-4xl font-black text-white mb-2">250+</div>
-              <div className="text-sm text-white/80 font-medium">Students Mentored</div>
-            </div>
-            <div className="glass p-6 rounded-2xl smooth-transition">
-              <div className="text-4xl font-black text-white mb-2">6+</div>
-              <div className="text-sm text-white/80 font-medium">Real Projects</div>
-            </div>
-            <div className="glass p-6 rounded-2xl smooth-transition">
-              <div className="text-4xl font-black text-white mb-2">83%</div>
-              <div className="text-sm text-white/80 font-medium">GPA • Dean's List</div>
-            </div>
+          {/* Minimal Project Grid */}
+          <div className="space-y-px">
+            {projects.slice(0, 3).map((project, idx) => (
+              <div key={idx} className="glass smooth-transition">
+                <button
+                  onClick={() => setExpandedProject(expandedProject === idx ? null : idx)}
+                  className="w-full text-left px-8 py-6 flex items-center justify-between group"
+                >
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-white group-hover:text-white/90 smooth-transition">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <FaChevronDown
+                    className={`text-white/40 smooth-transition ${
+                      expandedProject === idx ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {expandedProject === idx && (
+                  <div className="px-8 pb-6 border-t border-white/5">
+                    <p className="text-white/60 mb-6 mt-6 leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.techStack.split(', ').slice(0, 5).map((tech, i) => (
+                        <span key={i} className="text-xs text-white/40 font-mono">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-4">
+                      {project.liveLink && (
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-white/60 hover:text-white smooth-transition"
+                        >
+                          View Live →
+                        </a>
+                      )}
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-white/60 hover:text-white smooth-transition"
+                      >
+                        View Code →
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
 
-          {/* Featured Sections */}
-          <div className="space-y-6">
+          {/* Minimal Navigation to Other Sections */}
+          <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-px">
             <Link
-              href="/projects"
-              className="group block glass p-8 rounded-3xl smooth-transition shimmer"
+              href="/experience"
+              className="glass px-8 py-12 smooth-transition group hover:bg-white/5"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-white/20 rounded-xl">
-                    <FaRocket className="text-2xl text-white" />
-                  </div>
-                  <h2 className="text-3xl font-bold text-white">Featured Work</h2>
-                </div>
-                <FaArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-2 smooth-transition text-xl mt-2" />
-              </div>
-              <p className="text-white/90 leading-relaxed mb-6 text-lg">
-                Building PocketChange—a fintech platform with Plaid API integration.
-                Plus a 3D Fitness App mapping muscle groups, and production-ready portfolio managers.
-                Not school projects. Real solutions.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">React</span>
-                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">TypeScript</span>
-                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">Node.js</span>
-                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">PostgreSQL</span>
-                <span className="px-4 py-2 bg-white/20 text-white text-sm font-medium rounded-full">AWS</span>
-              </div>
+              <div className="text-sm text-white/40 mb-2 font-mono">01</div>
+              <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white/90">Experience</h3>
+              <p className="text-sm text-white/40">P&P Optica • TA @ Guelph</p>
             </Link>
 
             <Link
-              href="/experience"
-              className="group block glass p-8 rounded-3xl smooth-transition"
+              href="/skills"
+              className="glass px-8 py-12 smooth-transition group hover:bg-white/5"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-white/20 rounded-xl">
-                    <FaBriefcase className="text-2xl text-white" />
-                  </div>
-                  <h2 className="text-3xl font-bold text-white">Where I Work</h2>
-                </div>
-                <FaArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-2 smooth-transition text-xl mt-2" />
-              </div>
-              <p className="text-white/90 leading-relaxed mb-4 text-lg">
-                Shipping code at P&P Optica—building hyperspectral imaging systems that detect food contamination.
-                Taught 250+ students discrete mathematics. Cut deployment times by 75%.
-              </p>
-              <div className="text-sm text-white/70 font-medium">
-                Currently working • Open to Summer 2026 opportunities
-              </div>
+              <div className="text-sm text-white/40 mb-2 font-mono">02</div>
+              <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white/90">Skills</h3>
+              <p className="text-sm text-white/40">React • TypeScript • AWS</p>
             </Link>
 
             <Link
               href="/blog"
-              className="group block glass p-8 rounded-3xl smooth-transition"
+              className="glass px-8 py-12 smooth-transition group hover:bg-white/5"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-white/20 rounded-xl">
-                    <FaCode className="text-2xl text-white" />
-                  </div>
-                  <h2 className="text-3xl font-bold text-white">Writing</h2>
-                </div>
-                <FaArrowRight className="text-white/60 group-hover:text-white group-hover:translate-x-2 smooth-transition text-xl mt-2" />
-              </div>
-              <p className="text-white/90 leading-relaxed text-lg">
-                Deep dives on dev environments that don't suck, Git workflows that actually work,
-                and hard-won lessons from shipping production software.
-              </p>
+              <div className="text-sm text-white/40 mb-2 font-mono">03</div>
+              <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white/90">Writing</h3>
+              <p className="text-sm text-white/40">Dev workflows & insights</p>
             </Link>
+          </div>
+
+          {/* Status */}
+          <div className="mt-20 pt-12 border-t border-white/5">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+              <p className="text-sm text-white/40">Available for Summer 2026 Co-op</p>
+            </div>
           </div>
         </div>
       </section>
