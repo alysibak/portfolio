@@ -16,7 +16,7 @@ export default function ProjectsClient() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">Work</h1>
           <p className="text-lg text-white/40 mb-20 max-w-xl font-light">
-            Projects that solve real problems.
+            Things I've built.
           </p>
 
           <div className="space-y-px">

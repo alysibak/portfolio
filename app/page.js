@@ -22,7 +22,7 @@ export default function HomePage() {
           </h1>
 
           <p className="text-xl md:text-2xl text-white/60 mb-16 leading-relaxed max-w-2xl font-light">
-            Building production systems at P&P Optica. CS @ Guelph.
+            Writing code at P&P Optica. CS student at Guelph.
           </p>
 
           {/* Minimal Contact Links */}
@@ -119,7 +119,7 @@ export default function HomePage() {
             >
               <div className="text-sm text-white/40 mb-2 font-mono">01</div>
               <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white/90">Experience</h3>
-              <p className="text-sm text-white/40">P&P Optica • TA @ Guelph</p>
+              <p className="text-sm text-white/40">Work history</p>
             </Link>
 
             <Link
@@ -128,7 +128,7 @@ export default function HomePage() {
             >
               <div className="text-sm text-white/40 mb-2 font-mono">02</div>
               <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white/90">Skills</h3>
-              <p className="text-sm text-white/40">React • TypeScript • AWS</p>
+              <p className="text-sm text-white/40">Tech stack</p>
             </Link>
 
             <Link
@@ -137,7 +137,7 @@ export default function HomePage() {
             >
               <div className="text-sm text-white/40 mb-2 font-mono">03</div>
               <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-white/90">Writing</h3>
-              <p className="text-sm text-white/40">Dev workflows & insights</p>
+              <p className="text-sm text-white/40">What I've learned</p>
             </Link>
           </div>
 

@@ -14,7 +14,7 @@ export default function ExperienceClient() {
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-black text-white mb-4 tracking-tight">Experience</h1>
           <p className="text-lg text-white/40 mb-20 max-w-xl font-light">
-            Building production systems and teaching developers.
+            Where I've worked and what I've learned.
           </p>
 
           <div className="space-y-16">
