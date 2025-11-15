@@ -335,10 +335,41 @@ button:focus-visible {
 }
 
 /* Stagger animations */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
+.stagger-1 { animation-delay: 0.1s; transition-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; transition-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; transition-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; transition-delay: 0.4s; }
+
+/* Scroll-triggered Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Slide Down Animation for Expanded Content */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 2000px;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
 /* Decorative Elements */
 .dot-pattern {
@@ -358,4 +389,40 @@ button:focus-visible {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
+}
+
+/* Magnetic Link Effect */
+.magnetic-link {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magnetic-link:hover {
+  transform: scale(1.05);
+}
+
+.magnetic-link:active {
+  transform: scale(0.98);
+}
+
+/* Enhanced Rounded Corners */
+.rounded-2xl {
+  border-radius: 1.25rem;
+}
+
+/* Page Load Animation */
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-load {
+  animation: pageLoad 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
