@@ -7,7 +7,6 @@
   background: linear-gradient(135deg, #020617 0%, #0c4a6e 25%, #0f172a 50%, #082f49 100%);
   position: relative;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 .animated-gradient-bg::before {
