@@ -18,16 +18,16 @@ export default function HomePage() {
       <section className="pt-64 pb-32 px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="relative">
-            <div className="absolute -top-20 -left-20 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl floating"></div>
-            <div className="absolute -top-10 right-0 w-60 h-60 bg-blue-500/20 rounded-full blur-3xl floating" style={{animationDelay: '1s'}}></div>
+            <div className="absolute -top-20 -left-20 w-40 h-40 bg-sky-500/20 rounded-full blur-3xl floating"></div>
+            <div className="absolute -top-10 right-0 w-60 h-60 bg-cyan-500/20 rounded-full blur-3xl floating" style={{animationDelay: '1s'}}></div>
 
             <h1 className="text-8xl md:text-9xl font-black mb-8 leading-[0.9] tracking-tight relative z-10">
               <span className="gradient-text">Aly Sibak</span>
             </h1>
 
             <p className="text-2xl md:text-3xl text-white/70 mb-20 leading-relaxed max-w-2xl font-light relative z-10">
-              Writing code at <span className="text-purple-400 font-medium">P&P Optica</span>.
-              CS student at <span className="text-blue-400 font-medium">Guelph</span>.
+              Writing code at <span className="text-cyan-400 font-medium">P&P Optica</span>.
+              CS student at <span className="text-sky-400 font-medium">Guelph</span>.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export default function HomePage() {
           {/* Featured Projects */}
           <div className="mb-40">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 animate-pulse"></div>
+              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-sky-400 to-cyan-400 animate-pulse"></div>
               <h2 className="text-sm text-white/40 font-mono tracking-wider">SELECTED WORK</h2>
             </div>
             <div className="space-y-4">
@@ -71,13 +71,13 @@ export default function HomePage() {
                     className="w-full text-left px-10 py-8 flex items-center justify-between group"
                   >
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-300 smooth-transition">
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-sky-300 smooth-transition">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-purple-300/60 font-mono">{project.status}</p>
+                      <p className="text-sm text-sky-300/60 font-mono">{project.status}</p>
                     </div>
                     <FaChevronDown
-                      className={`text-purple-300/40 smooth-transition text-sm ${
+                      className={`text-sky-300/40 smooth-transition text-sm ${
                         expandedProject === idx ? 'rotate-180' : ''
                       }`}
                     />
@@ -130,9 +130,9 @@ export default function HomePage() {
               href="/experience"
               className="glass px-10 py-16 smooth-transition group glow-on-hover relative overflow-hidden"
             >
-              <div className="absolute top-4 right-4 text-6xl text-purple-500/10 font-black">01</div>
-              <div className="text-xs text-purple-300/60 mb-3 font-mono tracking-wider">EXPERIENCE</div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300">Work History</h3>
+              <div className="absolute top-4 right-4 text-6xl text-sky-500/10 font-black">01</div>
+              <div className="text-xs text-sky-300/60 mb-3 font-mono tracking-wider">EXPERIENCE</div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-sky-300">Work History</h3>
               <p className="text-sm text-white/40">Building at P&P Optica</p>
             </Link>
 
@@ -140,9 +140,9 @@ export default function HomePage() {
               href="/skills"
               className="glass px-10 py-16 smooth-transition group glow-on-hover relative overflow-hidden"
             >
-              <div className="absolute top-4 right-4 text-6xl text-blue-500/10 font-black">02</div>
-              <div className="text-xs text-blue-300/60 mb-3 font-mono tracking-wider">SKILLS</div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300">Tech Stack</h3>
+              <div className="absolute top-4 right-4 text-6xl text-cyan-500/10 font-black">02</div>
+              <div className="text-xs text-cyan-300/60 mb-3 font-mono tracking-wider">SKILLS</div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300">Tech Stack</h3>
               <p className="text-sm text-white/40">React • TypeScript • AWS</p>
             </Link>
 
@@ -150,9 +150,9 @@ export default function HomePage() {
               href="/blog"
               className="glass px-10 py-16 smooth-transition group glow-on-hover relative overflow-hidden"
             >
-              <div className="absolute top-4 right-4 text-6xl text-pink-500/10 font-black">03</div>
-              <div className="text-xs text-pink-300/60 mb-3 font-mono tracking-wider">WRITING</div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-pink-300">What I've Learned</h3>
+              <div className="absolute top-4 right-4 text-6xl text-emerald-500/10 font-black">03</div>
+              <div className="text-xs text-emerald-300/60 mb-3 font-mono tracking-wider">WRITING</div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-300">What I've Learned</h3>
               <p className="text-sm text-white/40">Dev workflows & insights</p>
             </Link>
           </div>
