@@ -106,11 +106,6 @@ export default function HomePage() {
             id="hero-content"
             className="relative will-change-transform will-change-opacity"
           >
-            {/* Floating gradient orbs - performance optimized */}
-            <div className="absolute -top-20 -left-20 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl floating will-change-transform" aria-hidden="true"></div>
-            <div className="absolute -top-10 right-0 w-80 h-80 bg-cyan-500/15 rounded-full blur-3xl floating animation-delay-1 will-change-transform" aria-hidden="true"></div>
-            <div className="absolute top-40 left-1/3 w-56 h-56 bg-emerald-500/10 rounded-full blur-3xl floating animation-delay-2 will-change-transform" aria-hidden="true"></div>
-
             {/* Name - staggered animation */}
             <div className={`mb-8 reveal-on-scroll stagger-1 ${isLoaded ? 'reveal-visible' : ''}`}>
               <h1 className="text-7xl md:text-9xl lg:text-[11rem] font-black mb-6 leading-[0.85] tracking-tighter relative z-10">
@@ -120,26 +115,26 @@ export default function HomePage() {
 
             {/* Role Tag */}
             <div className={`reveal-on-scroll stagger-2 mb-12 ${isLoaded ? '' : ''}`}>
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-sky-400/30 bg-sky-500/10 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm">
                 <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-lg shadow-emerald-400/50"></div>
-                <span className="text-sm md:text-base text-white/80 font-medium">Software Engineer • Full-Stack Developer</span>
+                <span className="text-sm md:text-base text-white font-medium">Software Engineer • Full-Stack Developer</span>
               </div>
             </div>
 
             {/* Tagline */}
             <div className={`reveal-on-scroll stagger-3 mb-8 ${isLoaded ? '' : ''}`}>
-              <p className="text-2xl md:text-3xl lg:text-4xl text-white/90 leading-relaxed max-w-4xl font-medium relative z-10">
-                Turning complex problems into elegant solutions.
+              <p className="text-2xl md:text-3xl lg:text-4xl text-white leading-relaxed max-w-4xl font-medium relative z-10">
+                Building scalable web applications that solve real problems.
                 <br/>
-                <span className="text-white/60 font-light">Currently optimizing systems at P&P Optica.</span>
+                <span className="text-white/60 font-light">Currently engineering solutions at P&P Optica.</span>
               </p>
             </div>
 
             {/* Quick Description */}
             <div className={`reveal-on-scroll stagger-4 mb-12 ${isLoaded ? '' : ''}`}>
-              <p className="text-base md:text-lg text-white/50 leading-relaxed max-w-2xl relative z-10">
-                I build full-stack applications with <span className="text-cyan-400 font-medium">React</span>, <span className="text-sky-400 font-medium">TypeScript</span>, and <span className="text-emerald-400 font-medium">Node.js</span>.
-                Studying Computer Science @ University of Guelph.
+              <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-2xl relative z-10">
+                Full-stack developer specializing in <span className="text-blue-400 font-medium">React</span>, <span className="text-blue-300 font-medium">TypeScript</span>, and <span className="text-blue-200 font-medium">Node.js</span>.
+                Computer Science student at University of Guelph.
               </p>
             </div>
           </div>
@@ -239,26 +234,26 @@ export default function HomePage() {
                       <div className="flex-1">
                         {/* Category & Year */}
                         <div className="flex items-center gap-3 mb-4">
-                          <span className="px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-xs font-mono text-sky-300">
+                          <span className="px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/40 text-xs font-mono text-blue-200">
                             {project.category}
                           </span>
-                          <span className="text-xs text-white/40 font-mono">{project.year}</span>
+                          <span className="text-xs text-white/50 font-mono">{project.year}</span>
                           <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                             project.status === 'Completed'
-                              ? 'bg-emerald-500/10 border border-emerald-400/30 text-emerald-300'
-                              : 'bg-amber-500/10 border border-amber-400/30 text-amber-300'
+                              ? 'bg-emerald-500/20 border border-emerald-400/40 text-emerald-200'
+                              : 'bg-amber-500/20 border border-amber-400/40 text-amber-200'
                           }`}>
                             {project.status}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-3xl md:text-4xl font-black text-white mb-4 group-hover:text-sky-300 smooth-transition">
+                        <h3 className="text-3xl md:text-4xl font-black text-white mb-4 group-hover:text-blue-300 smooth-transition">
                           {project.title}
                         </h3>
 
                         {/* Impact Statement */}
-                        <p className="text-base md:text-lg text-cyan-300/80 mb-4 font-medium">
+                        <p className="text-base md:text-lg text-white/80 mb-4 font-medium">
                           {project.impact}
                         </p>
 
@@ -304,7 +299,7 @@ export default function HomePage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View live demo of ${project.title}`}
-                            className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 text-white font-medium text-sm hover:shadow-lg hover:shadow-sky-500/30 smooth-transition"
+                            className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm hover:shadow-lg hover:shadow-blue-500/30 smooth-transition"
                           >
                             <FaExternalLinkAlt className="text-xs" aria-hidden="true" />
                             <span className="hidden md:inline">View Live</span>
@@ -368,12 +363,12 @@ export default function HomePage() {
               aria-label="View work experience"
               className="glass px-8 md:px-10 py-16 md:py-20 smooth-transition group glow-on-hover relative overflow-hidden reveal-on-scroll rounded-2xl stagger-1"
             >
-              <div className="absolute top-6 right-6 text-7xl md:text-8xl text-sky-500/5 font-black group-hover:text-sky-500/10 smooth-transition" aria-hidden="true">01</div>
+              <div className="absolute top-6 right-6 text-7xl md:text-8xl text-blue-500/5 font-black group-hover:text-blue-500/10 smooth-transition" aria-hidden="true">01</div>
               <div className="relative z-10">
-                <div className="text-xs text-sky-300/60 mb-3 font-mono tracking-widest uppercase">Experience</div>
-                <h3 className="text-2xl md:text-2xl font-bold text-white mb-2 group-hover:text-sky-300 smooth-transition">Work History</h3>
-                <p className="text-sm text-white/40 mb-4">Building at P&P Optica</p>
-                <div className="flex items-center gap-2 text-sky-400/60 group-hover:text-sky-400 smooth-transition">
+                <div className="text-xs text-blue-200/70 mb-3 font-mono tracking-widest uppercase">Experience</div>
+                <h3 className="text-2xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-200 smooth-transition">Work History</h3>
+                <p className="text-sm text-white/60 mb-4">Building at P&P Optica</p>
+                <div className="flex items-center gap-2 text-blue-300/80 group-hover:text-blue-200 smooth-transition">
                   <span className="text-sm font-medium">Explore</span>
                   <FaArrowRight className="text-xs group-hover:translate-x-1 smooth-transition" aria-hidden="true" />
                 </div>
@@ -385,12 +380,12 @@ export default function HomePage() {
               aria-label="View technical skills"
               className="glass px-8 md:px-10 py-16 md:py-20 smooth-transition group glow-on-hover relative overflow-hidden reveal-on-scroll rounded-2xl stagger-2"
             >
-              <div className="absolute top-6 right-6 text-7xl md:text-8xl text-cyan-500/5 font-black group-hover:text-cyan-500/10 smooth-transition" aria-hidden="true">02</div>
+              <div className="absolute top-6 right-6 text-7xl md:text-8xl text-blue-500/5 font-black group-hover:text-blue-500/10 smooth-transition" aria-hidden="true">02</div>
               <div className="relative z-10">
-                <div className="text-xs text-cyan-300/60 mb-3 font-mono tracking-widest uppercase">Skills</div>
-                <h3 className="text-2xl md:text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 smooth-transition">Tech Stack</h3>
-                <p className="text-sm text-white/40 mb-4">React • TypeScript • AWS</p>
-                <div className="flex items-center gap-2 text-cyan-400/60 group-hover:text-cyan-400 smooth-transition">
+                <div className="text-xs text-blue-200/70 mb-3 font-mono tracking-widest uppercase">Skills</div>
+                <h3 className="text-2xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-200 smooth-transition">Tech Stack</h3>
+                <p className="text-sm text-white/60 mb-4">React • TypeScript • AWS</p>
+                <div className="flex items-center gap-2 text-blue-300/80 group-hover:text-blue-200 smooth-transition">
                   <span className="text-sm font-medium">Explore</span>
                   <FaArrowRight className="text-xs group-hover:translate-x-1 smooth-transition" aria-hidden="true" />
                 </div>
@@ -402,12 +397,12 @@ export default function HomePage() {
               aria-label="Read blog posts"
               className="glass px-8 md:px-10 py-16 md:py-20 smooth-transition group glow-on-hover relative overflow-hidden reveal-on-scroll rounded-2xl stagger-3"
             >
-              <div className="absolute top-6 right-6 text-7xl md:text-8xl text-emerald-500/5 font-black group-hover:text-emerald-500/10 smooth-transition" aria-hidden="true">03</div>
+              <div className="absolute top-6 right-6 text-7xl md:text-8xl text-blue-500/5 font-black group-hover:text-blue-500/10 smooth-transition" aria-hidden="true">03</div>
               <div className="relative z-10">
-                <div className="text-xs text-emerald-300/60 mb-3 font-mono tracking-widest uppercase">Writing</div>
-                <h3 className="text-2xl md:text-2xl font-bold text-white mb-2 group-hover:text-emerald-300 smooth-transition">What I've Learned</h3>
-                <p className="text-sm text-white/40 mb-4">Dev workflows & insights</p>
-                <div className="flex items-center gap-2 text-emerald-400/60 group-hover:text-emerald-400 smooth-transition">
+                <div className="text-xs text-blue-200/70 mb-3 font-mono tracking-widest uppercase">Writing</div>
+                <h3 className="text-2xl md:text-2xl font-bold text-white mb-2 group-hover:text-blue-200 smooth-transition">What I've Learned</h3>
+                <p className="text-sm text-white/60 mb-4">Dev workflows & insights</p>
+                <div className="flex items-center gap-2 text-blue-300/80 group-hover:text-blue-200 smooth-transition">
                   <span className="text-sm font-medium">Explore</span>
                   <FaArrowRight className="text-xs group-hover:translate-x-1 smooth-transition" aria-hidden="true" />
                 </div>
