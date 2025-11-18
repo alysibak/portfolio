@@ -5,6 +5,9 @@ import { FaChevronDown, FaArrowRight, FaGithub, FaExternalLinkAlt, FaCode, FaRoc
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TechIcon from "@/components/TechIcon";
+import AIChat from "@/components/AIChat";
+import InteractiveSkillBadges from "@/components/InteractiveSkillBadges";
+import Timeline from "@/components/Timeline";
 import Link from "next/link";
 import Image from "next/image";
 import { projects, stats } from "@/lib/data";
@@ -744,6 +747,28 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Personal Timeline */}
+          <div className="mb-32 reveal-on-scroll">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 animate-pulse" aria-hidden="true"></div>
+              <h2 className="text-2xl md:text-3xl font-black text-white">My Developer Journey</h2>
+            </div>
+            <div className="glass rounded-2xl p-8 md:p-12">
+              <Timeline />
+            </div>
+          </div>
+
+          {/* Interactive Skills */}
+          <div className="mb-32 reveal-on-scroll">
+            <div className="flex items-center gap-4 mb-12">
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400 animate-pulse" aria-hidden="true"></div>
+              <h2 className="text-2xl md:text-3xl font-black text-white">Skills & Technologies</h2>
+            </div>
+            <div className="glass rounded-2xl p-8 md:p-12">
+              <InteractiveSkillBadges />
+            </div>
+          </div>
+
           {/* Navigation Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
             <Link
@@ -818,6 +843,9 @@ export default function HomePage() {
       </section>
 
       <Footer />
+
+      {/* AI Chat Assistant */}
+      <AIChat />
     </div>
   );
 }
