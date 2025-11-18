@@ -2,9 +2,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Solid Professional Background */
+/* Solid Professional Background with Subtle Grid Pattern */
 .animated-gradient-bg {
-  background: #0a0f1e;
+  background-color: #0a0f1e;
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
