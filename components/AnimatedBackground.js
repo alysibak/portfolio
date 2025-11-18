@@ -10,6 +10,8 @@ export default function AnimatedBackground() {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     let animationFrameId;
     let particles = [];
 
@@ -21,15 +23,17 @@ export default function AnimatedBackground() {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    // Particle class
+    // Particle class - Electric Blue theme
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
-        this.opacity = Math.random() * 0.5 + 0.2;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.speedY = Math.random() * 0.4 - 0.2;
+        this.opacity = Math.random() * 0.4 + 0.2;
+        // Random electric blue/cyan color
+        this.color = Math.random() > 0.5 ? '14, 165, 233' : '6, 182, 212'; // sky-500 or cyan-500
       }
 
       update() {
@@ -43,16 +47,16 @@ export default function AnimatedBackground() {
       }
 
       draw() {
-        ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
+        ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    // Create particles
+    // Create particles - performance optimized
     const createParticles = () => {
-      const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
+      const particleCount = Math.min(80, Math.floor((canvas.width * canvas.height) / 20000));
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
       }
@@ -60,7 +64,7 @@ export default function AnimatedBackground() {
 
     createParticles();
 
-    // Animation loop
+    // Animation loop with RAF
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -69,7 +73,7 @@ export default function AnimatedBackground() {
         particle.draw();
       });
 
-      // Draw connections
+      // Draw connections - electric blue/cyan theme
       particles.forEach((a, i) => {
         particles.slice(i + 1).forEach(b => {
           const dx = a.x - b.x;
@@ -77,8 +81,11 @@ export default function AnimatedBackground() {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 120) {
-            ctx.strokeStyle = `rgba(99, 102, 241, ${0.15 * (1 - distance / 120)})`;
-            ctx.lineWidth = 1;
+            const opacity = 0.12 * (1 - distance / 120);
+            // Alternate between sky and cyan colors
+            const color = Math.random() > 0.5 ? '14, 165, 233' : '6, 182, 212';
+            ctx.strokeStyle = `rgba(${color}, ${opacity})`;
+            ctx.lineWidth = 0.8;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -102,7 +109,8 @@ export default function AnimatedBackground() {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 0.4 }}
+      style={{ opacity: 0.35 }}
+      aria-hidden="true"
     />
   );
 }
