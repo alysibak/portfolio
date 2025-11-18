@@ -1,0 +1,8 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Briefcase -->
+  <rect x="3" y="7" width="14" height="10" rx="2" fill="#10b981" opacity="0.9"/>
+  <path d="M7 7V5C7 3.89543 7.89543 3 9 3H11C12.1046 3 13 3.89543 13 5V7"
+        stroke="#10b981" stroke-width="2" fill="none" opacity="0.9"/>
+  <rect x="3" y="10" width="14" height="2" fill="#059669" opacity="0.9"/>
+  <rect x="9" y="10" width="2" height="3" fill="#34d399" opacity="0.8"/>
+</svg>

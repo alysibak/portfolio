@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { FaChevronDown, FaArrowRight, FaGithub, FaExternalLinkAlt, FaCode, FaRocket, FaCheck } from "react-icons/fa";
+import { FaChevronDown, FaArrowRight, FaGithub, FaExternalLinkAlt, FaCode, FaRocket, FaCheck, FaLinkedin, FaEnvelope, FaFileAlt } from "react-icons/fa";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TechIcon from "@/components/TechIcon";
 import Link from "next/link";
+import Image from "next/image";
 import { projects, stats } from "@/lib/data";
 
 export default function HomePage() {
@@ -141,14 +142,17 @@ export default function HomePage() {
             {/* Professional Headshot - Desktop Only */}
             <div className="hidden lg:block absolute top-0 right-0 reveal-on-scroll">
               <div className="relative group">
-                {/* Photo Placeholder with Premium Styling */}
+                {/* Professional Profile Image */}
                 <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-700 p-1.5 shadow-2xl shadow-blue-500/30">
-                  <div className="w-full h-full rounded-3xl bg-slate-800 flex items-center justify-center overflow-hidden">
-                    <div className="text-center">
-                      <div className="text-7xl mb-3">👨‍💻</div>
-                      <p className="text-xs text-white/50 font-mono">Aly Sibak</p>
-                      <p className="text-xs text-white/30 font-mono mt-1">Software Engineer</p>
-                    </div>
+                  <div className="w-full h-full rounded-3xl overflow-hidden">
+                    <Image
+                      src="/profile.svg"
+                      alt="Aly Sibak - Software Engineer"
+                      width={256}
+                      height={256}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
                   </div>
                 </div>
 
@@ -282,27 +286,37 @@ export default function HomePage() {
                   className="glass smooth-transition glow-on-hover shimmer reveal-on-scroll rounded-2xl overflow-hidden group"
                   style={{ transitionDelay: `${idx * 100}ms` }}
                 >
-                  {/* Project Screenshot Placeholder */}
+                  {/* Project Screenshot */}
                   <div className="relative h-64 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 overflow-hidden">
-                    {/* Grid Pattern Overlay */}
-                    <div className="absolute inset-0 opacity-30" style={{
-                      backgroundImage: `
-                        linear-gradient(rgba(96, 165, 250, 0.1) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(96, 165, 250, 0.1) 1px, transparent 1px)
-                      `,
-                      backgroundSize: '20px 20px'
-                    }}></div>
-
-                    {/* Placeholder Content */}
+                    {/* Project Image */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-6xl mb-4 opacity-20">
-                          {project.category === 'FinTech' && '💰'}
-                          {project.category === 'Health & Fitness' && '💪'}
-                          {project.category === 'Finance' && '📊'}
-                        </div>
-                        <p className="text-sm text-white/20 font-mono">Project Screenshot</p>
-                      </div>
+                      {project.category === 'FinTech' && (
+                        <Image
+                          src="/fintech-project.svg"
+                          alt={`${project.title} - FinTech Project`}
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
+                      {project.category === 'Health & Fitness' && (
+                        <Image
+                          src="/health-project.svg"
+                          alt={`${project.title} - Health & Fitness Project`}
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
+                      {project.category === 'Finance' && (
+                        <Image
+                          src="/finance-project.svg"
+                          alt={`${project.title} - Finance Project`}
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover"
+                        />
+                      )}
                     </div>
 
                     {/* Hover Gradient Overlay */}
@@ -446,13 +460,16 @@ export default function HomePage() {
                 {/* Profile Image Section */}
                 <div className="md:col-span-1 flex flex-col items-center md:items-start">
                   <div className="relative group mb-6">
-                    {/* Photo Placeholder with Gradient Border */}
+                    {/* Professional Profile Image */}
                     <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-blue-500 via-cyan-500 to-blue-600 p-1">
-                      <div className="w-full h-full rounded-2xl bg-slate-800 flex items-center justify-center overflow-hidden">
-                        <div className="text-center">
-                          <div className="text-5xl mb-2">👨‍💻</div>
-                          <p className="text-xs text-white/40 font-mono">Aly Sibak</p>
-                        </div>
+                      <div className="w-full h-full rounded-2xl overflow-hidden">
+                        <Image
+                          src="/profile.svg"
+                          alt="Aly Sibak - Software Developer"
+                          width={192}
+                          height={192}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </div>
                     {/* Glow Effect */}
@@ -462,16 +479,34 @@ export default function HomePage() {
                   {/* Quick Stats */}
                   <div className="space-y-3 w-full">
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-400" aria-hidden="true"></div>
-                      <span className="text-sm text-white/60">📍 Waterloo, ON</span>
+                      <Image
+                        src="/location-icon.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="flex-shrink-0"
+                      />
+                      <span className="text-sm text-white/60">Waterloo, ON</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-cyan-400" aria-hidden="true"></div>
-                      <span className="text-sm text-white/60">🎓 Computer Science @ UoG</span>
+                      <Image
+                        src="/education-icon.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="flex-shrink-0"
+                      />
+                      <span className="text-sm text-white/60">Computer Science @ UoG</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-emerald-400" aria-hidden="true"></div>
-                      <span className="text-sm text-white/60">💼 Software Dev @ P&P Optica</span>
+                      <Image
+                        src="/work-icon.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="flex-shrink-0"
+                      />
+                      <span className="text-sm text-white/60">Software Dev @ P&P Optica</span>
                     </div>
                   </div>
                 </div>
@@ -503,7 +538,14 @@ export default function HomePage() {
                   <div className="grid md:grid-cols-2 gap-4 pt-6 border-t border-white/5">
                     <div>
                       <h4 className="text-sm font-bold text-blue-200 mb-3 flex items-center gap-2">
-                        <span className="text-base">🚀</span> Currently Building
+                        <Image
+                          src="/rocket-icon.svg"
+                          alt=""
+                          width={20}
+                          height={20}
+                          className="flex-shrink-0"
+                        />
+                        Currently Building
                       </h4>
                       <ul className="space-y-2 text-sm text-white/60">
                         <li className="flex items-start gap-2">
@@ -518,7 +560,14 @@ export default function HomePage() {
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-blue-200 mb-3 flex items-center gap-2">
-                        <span className="text-base">📚</span> Currently Learning
+                        <Image
+                          src="/books-icon.svg"
+                          alt=""
+                          width={20}
+                          height={20}
+                          className="flex-shrink-0"
+                        />
+                        Currently Learning
                       </h4>
                       <ul className="space-y-2 text-sm text-white/60">
                         <li className="flex items-start gap-2">
@@ -541,76 +590,155 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* GitHub Activity Section */}
+          {/* Let's Connect Section */}
           <div className="mb-32 reveal-on-scroll">
             <div className="flex items-center gap-4 mb-12">
               <div className="w-3 h-3 rounded-full bg-gradient-to-r from-emerald-400 to-green-400 animate-pulse" aria-hidden="true"></div>
-              <h2 className="text-2xl md:text-3xl font-black text-white">GitHub Activity</h2>
+              <h2 className="text-2xl md:text-3xl font-black text-white">Let's Connect</h2>
             </div>
 
-            <div className="glass rounded-2xl p-8 md:p-12">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Contributions</h3>
-                  <p className="text-white/60">My coding activity over the past year</p>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Contact Card */}
+              <div className="glass rounded-2xl p-8 md:p-10 group hover:border-blue-400/30 smooth-transition">
+                <h3 className="text-xl font-bold text-white mb-2">Get in Touch</h3>
+                <p className="text-white/60 mb-6">
+                  I'm always open to discussing new opportunities, collaborations, or just having a chat about tech.
+                </p>
+
+                <div className="space-y-4 mb-8">
+                  {/* Email */}
+                  <a
+                    href="mailto:asibak@uoguelph.ca"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-slate-800/30 border border-white/5 hover:border-blue-400/40 hover:bg-slate-800/50 smooth-transition group/item"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                      <FaEnvelope className="text-white text-lg" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm text-white/50 mb-1">Email</div>
+                      <div className="text-white font-medium truncate group-hover/item:text-blue-300 smooth-transition">
+                        asibak@uoguelph.ca
+                      </div>
+                    </div>
+                    <FaArrowRight className="text-white/30 group-hover/item:text-white/70 group-hover/item:translate-x-1 smooth-transition flex-shrink-0" />
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/in/aly-sibak-721b85252/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-slate-800/30 border border-white/5 hover:border-cyan-400/40 hover:bg-slate-800/50 smooth-transition group/item"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center flex-shrink-0">
+                      <FaLinkedin className="text-white text-lg" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm text-white/50 mb-1">LinkedIn</div>
+                      <div className="text-white font-medium group-hover/item:text-cyan-300 smooth-transition">
+                        Connect with me
+                      </div>
+                    </div>
+                    <FaArrowRight className="text-white/30 group-hover/item:text-white/70 group-hover/item:translate-x-1 smooth-transition flex-shrink-0" />
+                  </a>
+
+                  {/* GitHub */}
+                  <a
+                    href="https://github.com/alysibak"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-slate-800/30 border border-white/5 hover:border-purple-400/40 hover:bg-slate-800/50 smooth-transition group/item"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                      <FaGithub className="text-white text-lg" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm text-white/50 mb-1">GitHub</div>
+                      <div className="text-white font-medium group-hover/item:text-purple-300 smooth-transition">
+                        Check out my code
+                      </div>
+                    </div>
+                    <FaArrowRight className="text-white/30 group-hover/item:text-white/70 group-hover/item:translate-x-1 smooth-transition flex-shrink-0" />
+                  </a>
                 </div>
-                <a
-                  href="https://github.com/alysibak"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white/70 hover:text-white hover:border-white/30 font-medium text-sm smooth-transition group"
-                >
-                  <FaGithub className="text-base" aria-hidden="true" />
-                  <span>View Profile</span>
-                  <FaArrowRight className="text-xs group-hover:translate-x-1 smooth-transition" aria-hidden="true" />
-                </a>
+
+                <div className="pt-6 border-t border-white/5">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                    <span className="text-sm text-white/60">Available for Summer 2026 Co-op</span>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 text-blue-300 hover:text-blue-200 smooth-transition group/link text-sm font-medium"
+                  >
+                    Send me a message
+                    <FaArrowRight className="text-xs group-hover/link:translate-x-1 smooth-transition" />
+                  </Link>
+                </div>
               </div>
 
-              {/* GitHub Calendar Component */}
-              <div className="github-calendar-container">
-                <div className="bg-slate-800/50 rounded-xl p-6 border border-white/5">
-                  <div className="text-center text-white/40 text-sm font-mono">
-                    <div className="mb-4">📊 GitHub Contribution Graph</div>
-                    <div className="grid grid-cols-7 gap-1 max-w-3xl mx-auto">
-                      {Array.from({ length: 52 * 7 }).map((_, i) => {
-                        const intensity = Math.random();
-                        const opacity = intensity > 0.7 ? 0.6 : intensity > 0.4 ? 0.4 : intensity > 0.2 ? 0.2 : 0.05;
-                        return (
-                          <div
-                            key={i}
-                            className="w-3 h-3 rounded-sm smooth-transition hover:scale-125"
-                            style={{
-                              backgroundColor: `rgba(96, 165, 250, ${opacity})`,
-                            }}
-                            title={`Contribution activity`}
-                          />
-                        );
-                      })}
+              {/* Skills Highlight Card */}
+              <div className="glass rounded-2xl p-8 md:p-10 group hover:border-cyan-400/30 smooth-transition">
+                <h3 className="text-xl font-bold text-white mb-2">Tech I Work With</h3>
+                <p className="text-white/60 mb-6">
+                  Primary technologies and tools I use to build modern web applications.
+                </p>
+
+                <div className="space-y-6">
+                  {/* Frontend */}
+                  <div>
+                    <h4 className="text-sm font-bold text-blue-200 mb-3">Frontend Development</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'JavaScript'].map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-400/30 text-blue-200 text-xs font-medium hover:bg-blue-500/20 smooth-transition"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
-                    <p className="mt-4 text-xs text-white/30">
-                      Replace this visualization with real GitHub data using the GitHub API
-                    </p>
+                  </div>
+
+                  {/* Backend */}
+                  <div>
+                    <h4 className="text-sm font-bold text-cyan-200 mb-3">Backend & Database</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'REST APIs'].map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1.5 rounded-lg bg-cyan-500/10 border border-cyan-400/30 text-cyan-200 text-xs font-medium hover:bg-cyan-500/20 smooth-transition"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tools */}
+                  <div>
+                    <h4 className="text-sm font-bold text-emerald-200 mb-3">Tools & Platform</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {['Git', 'AWS', 'Docker', 'Postman', 'VS Code'].map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-400/30 text-emerald-200 text-xs font-medium hover:bg-emerald-500/20 smooth-transition"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* GitHub Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                <div className="bg-slate-800/30 rounded-xl p-4 text-center border border-white/5">
-                  <div className="text-2xl font-bold text-emerald-400 mb-1">150+</div>
-                  <div className="text-xs text-white/50">Contributions</div>
-                </div>
-                <div className="bg-slate-800/30 rounded-xl p-4 text-center border border-white/5">
-                  <div className="text-2xl font-bold text-blue-400 mb-1">12</div>
-                  <div className="text-xs text-white/50">Repositories</div>
-                </div>
-                <div className="bg-slate-800/30 rounded-xl p-4 text-center border border-white/5">
-                  <div className="text-2xl font-bold text-cyan-400 mb-1">3</div>
-                  <div className="text-xs text-white/50">Active Projects</div>
-                </div>
-                <div className="bg-slate-800/30 rounded-xl p-4 text-center border border-white/5">
-                  <div className="text-2xl font-bold text-purple-400 mb-1">8</div>
-                  <div className="text-xs text-white/50">Languages</div>
+                <div className="pt-6 border-t border-white/5 mt-6">
+                  <Link
+                    href="/skills"
+                    className="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200 smooth-transition group/link text-sm font-medium"
+                  >
+                    View full tech stack
+                    <FaArrowRight className="text-xs group-hover/link:translate-x-1 smooth-transition" />
+                  </Link>
                 </div>
               </div>
             </div>
