@@ -151,6 +151,26 @@ export default function InteractiveSkillBadges() {
     }
   ];
 
+  // Category colors for visual organization
+  const categoryColors = {
+    'Frontend': { bg: 'from-cyan-500 to-blue-500', color: '#22d3ee', border: '#06b6d4' },
+    'Backend': { bg: 'from-green-500 to-emerald-500', color: '#10b981', border: '#059669' },
+    'Language': { bg: 'from-purple-500 to-pink-500', color: '#a855f7', border: '#9333ea' },
+    'Database': { bg: 'from-orange-500 to-red-500', color: '#f97316', border: '#ea580c' },
+    'Cloud': { bg: 'from-yellow-500 to-amber-500', color: '#eab308', border: '#d97706' },
+    'Tools': { bg: 'from-indigo-500 to-violet-500', color: '#6366f1', border: '#4f46e5' },
+    'DevOps': { bg: 'from-rose-500 to-red-500', color: '#f43f5e', border: '#e11d48' }
+  };
+
+  // Get proficiency level label
+  const getProficiencyLevel = (proficiency) => {
+    if (proficiency >= 90) return { label: 'Expert', color: '#10b981' };
+    if (proficiency >= 80) return { label: 'Advanced', color: '#3b82f6' };
+    if (proficiency >= 70) return { label: 'Proficient', color: '#8b5cf6' };
+    if (proficiency >= 60) return { label: 'Intermediate', color: '#f59e0b' };
+    return { label: 'Learning', color: '#6b7280' };
+  };
+
   return (
     <div className="space-y-8">
       <div className="text-center mb-8">
@@ -163,6 +183,8 @@ export default function InteractiveSkillBadges() {
         {skills.map((skill, idx) => {
           const Icon = skill.icon;
           const isHovered = hoveredSkill === skill.name;
+          const categoryColor = categoryColors[skill.category];
+          const proficiencyLevel = getProficiencyLevel(skill.proficiency);
 
           return (
             <div
@@ -183,6 +205,30 @@ export default function InteractiveSkillBadges() {
                   boxShadow: isHovered ? `0 8px 32px ${skill.color}40` : 'none'
                 }}
               >
+                {/* Category Badge - Top Right Corner */}
+                <div
+                  className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-bold smooth-transition"
+                  style={{
+                    backgroundColor: `${categoryColor.color}30`,
+                    color: categoryColor.color,
+                    border: `1px solid ${categoryColor.border}60`
+                  }}
+                >
+                  {skill.category}
+                </div>
+
+                {/* Proficiency Percentage - Top Left Corner */}
+                <div
+                  className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-xs font-bold smooth-transition"
+                  style={{
+                    backgroundColor: `${proficiencyLevel.color}20`,
+                    color: proficiencyLevel.color,
+                    border: `1px solid ${proficiencyLevel.color}60`
+                  }}
+                >
+                  {skill.proficiency}%
+                </div>
+
                 {/* Icon */}
                 <Icon
                   className="text-4xl mb-2 smooth-transition"
@@ -201,16 +247,21 @@ export default function InteractiveSkillBadges() {
                   {skill.name}
                 </p>
 
-                {/* Proficiency Bar */}
-                <div className="w-full mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
+                {/* Proficiency Bar - Always Visible */}
+                <div className="w-full mt-3 h-1.5 bg-white/10 rounded-full overflow-hidden">
                   <div
                     className="h-full smooth-transition rounded-full"
                     style={{
-                      width: isHovered ? `${skill.proficiency}%` : '0%',
-                      backgroundColor: '#ffffff'
+                      width: `${skill.proficiency}%`,
+                      backgroundColor: isHovered ? '#ffffff' : proficiencyLevel.color
                     }}
                   />
                 </div>
+
+                {/* Proficiency Level Label */}
+                <p className="text-[10px] text-white/50 mt-1 smooth-transition">
+                  {proficiencyLevel.label}
+                </p>
 
                 {/* Glow Effect */}
                 <div
@@ -280,13 +331,47 @@ export default function InteractiveSkillBadges() {
         })}
       </div>
 
-      {/* Legend */}
+      {/* Legend - Category Colors */}
       <div className="pt-6 border-t border-white/10">
+        <p className="text-center text-white/40 text-xs mb-4">Categories</p>
         <div className="flex flex-wrap gap-4 justify-center text-xs">
-          {['Frontend', 'Backend', 'Language', 'Database', 'Cloud', 'Tools', 'DevOps'].map((category, idx) => (
-            <div key={idx} className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400" />
-              <span className="text-white/60">{category}</span>
+          {Object.entries(categoryColors).map(([category, colors], idx) => (
+            <div key={idx} className="flex items-center gap-2 group cursor-default">
+              <div
+                className="w-3 h-3 rounded-full smooth-transition"
+                style={{
+                  backgroundColor: colors.color,
+                  boxShadow: `0 0 8px ${colors.color}60`
+                }}
+              />
+              <span className="text-white/60 group-hover:text-white smooth-transition">{category}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Proficiency Levels Legend */}
+      <div className="pt-4 border-t border-white/10">
+        <p className="text-center text-white/40 text-xs mb-4">Proficiency Levels</p>
+        <div className="flex flex-wrap gap-4 justify-center text-xs">
+          {[
+            { label: 'Expert', color: '#10b981', range: '90-100%' },
+            { label: 'Advanced', color: '#3b82f6', range: '80-89%' },
+            { label: 'Proficient', color: '#8b5cf6', range: '70-79%' },
+            { label: 'Intermediate', color: '#f59e0b', range: '60-69%' },
+            { label: 'Learning', color: '#6b7280', range: '<60%' }
+          ].map((level, idx) => (
+            <div key={idx} className="flex items-center gap-2 group cursor-default">
+              <div
+                className="w-3 h-3 rounded-full smooth-transition"
+                style={{
+                  backgroundColor: level.color,
+                  boxShadow: `0 0 8px ${level.color}60`
+                }}
+              />
+              <span className="text-white/60 group-hover:text-white smooth-transition">
+                {level.label} <span className="text-white/40">({level.range})</span>
+              </span>
             </div>
           ))}
         </div>
